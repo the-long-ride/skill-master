@@ -1,0 +1,32 @@
+{
+  "Skill": "F:\\Extensions\\skill-master\\.agents\\skills\\universal-skill-governance\\SKILL.md",
+  "Pass": 6,
+  "Fail": 0,
+  "Decision": "READY",
+  "Checks": [
+    {
+      "Status": "PASS",
+      "Note": "Has name"
+    },
+    {
+      "Status": "PASS",
+      "Note": "Has description"
+    },
+    {
+      "Status": "PASS",
+      "Note": "Description starts with Use when"
+    },
+    {
+      "Status": "PASS",
+      "Note": "Has Workflow section"
+    },
+    {
+      "Status": "PASS",
+      "Note": "Has Failure Modes section"
+    },
+    {
+      "Status": "PASS",
+      "Note": "Has Output Format section"
+    }
+  ]
+}

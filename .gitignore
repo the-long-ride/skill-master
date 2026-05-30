@@ -1,0 +1,6 @@
+/.agents/
+/chat-web/
+/generated-reports/
+/node_modules/
+/*.tgz
+/.tmp/

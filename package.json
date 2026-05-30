@@ -1,0 +1,41 @@
+{
+  "name": "skill-master",
+  "version": "0.1.0",
+  "description": "A routed skill-design catalog for AI agents, installed with one /skill-master entry point.",
+  "license": "MIT",
+  "bin": {
+    "skill-master": "bin/skill-master.js"
+  },
+  "files": [
+    "AGENTS.md",
+    "LICENSE",
+    "README.md",
+    "bin/",
+    "commands/",
+    "docs/",
+    "scripts/",
+    "skill-index.json",
+    "skills/",
+    "src/"
+  ],
+  "scripts": {
+    "test": "node bin/skill-master.js doctor .",
+    "verify": "node bin/skill-master.js doctor .",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "keywords": [
+    "agent-skill",
+    "ai-agent",
+    "agent-skills",
+    "codex",
+    "claude",
+    "slash-command",
+    "skill-master"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

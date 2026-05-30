@@ -1,0 +1,206 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-05-30",
+  "commands": [
+    {
+      "name": "skill-master",
+      "command": "/skill-master",
+      "path": "commands/skill-master.md",
+      "routingFile": "src/routing/skill-master-routing.json",
+      "description": "Single natural-language entry point for routing skill-design requests to the correct advisor skill."
+    }
+  ],
+  "routing": {
+    "name": "skill-master-routing",
+    "path": "src/routing/skill-master-routing.json",
+    "examplesPath": "skills/skill-category-router/references/routing-examples.md"
+  },
+  "skills": [
+    {
+      "name": "creating-skills",
+      "path": "skills/creating-skills/SKILL.md",
+      "scope": "authoring",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "skill-category-router",
+      "path": "skills/skill-category-router/SKILL.md",
+      "scope": "category-routing",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-skill-governance-skills",
+      "path": "skills/advise-skill-governance-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-software-engineering-skills",
+      "path": "skills/advise-software-engineering-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-frontend-design-skills",
+      "path": "skills/advise-frontend-design-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-testing-qa-skills",
+      "path": "skills/advise-testing-qa-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-documents-office-skills",
+      "path": "skills/advise-documents-office-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-data-analytics-skills",
+      "path": "skills/advise-data-analytics-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-research-rag-skills",
+      "path": "skills/advise-research-rag-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-memory-personalization-skills",
+      "path": "skills/advise-memory-personalization-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-tool-integration-skills",
+      "path": "skills/advise-tool-integration-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-browser-automation-skills",
+      "path": "skills/advise-browser-automation-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-agent-orchestration-skills",
+      "path": "skills/advise-agent-orchestration-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-devops-cloud-skills",
+      "path": "skills/advise-devops-cloud-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-security-compliance-skills",
+      "path": "skills/advise-security-compliance-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-business-operations-skills",
+      "path": "skills/advise-business-operations-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-sales-revenue-skills",
+      "path": "skills/advise-sales-revenue-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-customer-support-skills",
+      "path": "skills/advise-customer-support-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-product-management-skills",
+      "path": "skills/advise-product-management-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-marketing-growth-skills",
+      "path": "skills/advise-marketing-growth-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-finance-accounting-skills",
+      "path": "skills/advise-finance-accounting-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-people-hr-skills",
+      "path": "skills/advise-people-hr-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-legal-work-skills",
+      "path": "skills/advise-legal-work-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-operations-process-skills",
+      "path": "skills/advise-operations-process-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-productivity-workplace-skills",
+      "path": "skills/advise-productivity-workplace-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-enterprise-search-knowledge-skills",
+      "path": "skills/advise-enterprise-search-knowledge-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-small-business-skills",
+      "path": "skills/advise-small-business-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-design-ux-work-skills",
+      "path": "skills/advise-design-ux-work-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-creative-media-skills",
+      "path": "skills/advise-creative-media-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "advise-science-domain-skills",
+      "path": "skills/advise-science-domain-skills/SKILL.md",
+      "scope": "category-advisor",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    },
+    {
+      "name": "universal-skill-governance",
+      "path": "skills/universal-skill-governance/SKILL.md",
+      "scope": "governance",
+      "runtimeCompatibility": ["copilot", "claude", "codex", "web-chat-manual"]
+    }
+  ]
+}
