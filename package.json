@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "description": "A routed skill-design catalog for AI agents, installed with one /skill-master entry point.",
   "license": "MIT",
+  "author": "the-long-ride",
   "bin": {
     "skill-master": "bin/skill-master.js"
   },
   "files": [
     "AGENTS.md",
+    "CHANGELOG.md",
+    "GUIDELINE.md",
     "LICENSE",
     "README.md",
     "bin/",
@@ -20,7 +23,9 @@
   ],
   "scripts": {
     "test": "node bin/skill-master.js doctor .",
-    "verify": "node bin/skill-master.js doctor .",
+    "verify": "node bin/skill-master.js verify .",
+    "verify:node": "node scripts/verify-skills.js",
+    "verify:posix": "sh scripts/verify-skills.sh",
     "pack:dry": "npm pack --dry-run"
   },
   "keywords": [

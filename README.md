@@ -1,57 +1,84 @@
 # Skill Master
 
-Skill Master is a routed skill-design catalog for AI agents. Humans use one slash command, `/skill-master`, and the agent routes natural language to the right advisor skill.
+Skill Master is a routed skill-design catalog for AI agents.
 
-## Install With npx
+Instead of asking humans to remember many skill names, Skill Master gives them one entry point:
 
-Install the catalog into a project:
+```text
+/skill-master <what you want to build, review, or improve>
+```
+
+The agent then reads the routing catalog, chooses the right advisor skill, and produces a concrete blueprint for the target `SKILL.md`.
+
+## Why This Helps
+
+- One command, many expert advisors.
+- Natural-language routing for humans.
+- Category-specific standards, examples, failure modes, and validation prompts.
+- Works with local coding agents and manual web chat workflows.
+- Installable with `npx`, so teams can bootstrap the same structure quickly.
+- Designed for contribution: new categories, examples, and advisor skills can be added without changing the whole system.
+
+## Quick Start
+
+Install Skill Master into a project:
 
 ```bash
 npx skill-master init
 ```
 
-Validate an install:
+Validate the install:
 
 ```bash
 npx skill-master doctor .
 ```
 
-List route categories:
+Run OS-aware script verification:
+
+```bash
+npx skill-master verify .
+```
+
+List routed categories:
 
 ```bash
 npx skill-master list
 ```
 
-## Local Development
+## Use With AI Agents
 
-```bash
-npm test
-npm run pack:dry
+After installation, ask your agent to use:
+
+```text
+/skill-master I want to build a skill that helps support teams triage customer tickets
 ```
 
-## Layout
+The agent should read `commands/skill-master.md`, route through `src/routing/skill-master-routing.json`, then load the selected advisor skill from `skills/`.
 
-- `commands/` contains `/skill-master`.
-- `skills/` contains all advisor skills.
-- `src/routing/` contains the routing catalog.
-- `scripts/` contains verification tooling.
-- `docs/` contains human-facing documentation.
-- `skill-index.json` indexes commands, routing, and skills.
+For ChatGPT, Claude.ai, Gemini, or other web chat interfaces, see `GUIDELINE.md` and `docs/WEB-CHAT-PACK.md`.
 
-See `docs/STRUCTURE.md` for details.
+## Contributing
 
-## Publishing
+Contributions are welcome. Good improvements include:
 
-Before publishing:
+- New advisor categories.
+- More realistic routing examples.
+- Better failure modes and validation prompts.
+- Cross-runtime compatibility notes.
+- Tests for routing and package installation.
+- Documentation for specific agents and web chat interfaces.
+
+Before proposing changes, run:
 
 ```bash
 npm test
+npm run verify
 npm pack --dry-run
-npm publish
 ```
 
-If the npm name `skill-master` is unavailable, change `name` in `package.json` to a scoped package such as `@your-scope/skill-master`, then publish with:
+## Documentation
 
-```bash
-npm publish --access public
-```
+- `GUIDELINE.md` explains installation, local-agent usage, and web-chat usage.
+- `docs/STRUCTURE.md` explains the source layout.
+- `CHANGELOG.md` tracks notable changes.
+- `LICENSE` contains the MIT license.

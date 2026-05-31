@@ -2,10 +2,13 @@
 
 const fs = require("fs");
 const path = require("path");
+const { spawnSync } = require("child_process");
 
 const PACKAGE_ROOT = path.resolve(__dirname, "..");
 const INSTALL_PATHS = [
   "AGENTS.md",
+  "CHANGELOG.md",
+  "GUIDELINE.md",
   "commands",
   "docs",
   "scripts",
@@ -19,6 +22,7 @@ function usage() {
 
 Usage:
   skill-master init [target] [--force] [--dry-run]
+  skill-master verify [target]
   skill-master doctor [target]
   skill-master list [target]
   skill-master path
@@ -31,10 +35,76 @@ Examples:
 
 Commands:
   init      Copy Skill Master source files into a target project.
+  verify    Detect the OS and run the corresponding verification script.
   doctor    Validate commands, routing, index paths, and SKILL.md files.
   list      Print routed categories and advisor skills.
   path      Print this npm package's installed path.
 `);
+}
+
+function scriptForPlatform() {
+  if (process.platform === "win32") {
+    return {
+      label: "Windows",
+      script: path.join(PACKAGE_ROOT, "scripts", "verify-skills.ps1"),
+      candidates: [
+        { command: "pwsh", args: ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File"] },
+        { command: "powershell.exe", args: ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File"] }
+      ]
+    };
+  }
+
+  if (process.platform === "darwin") {
+    return {
+      label: "macOS",
+      script: path.join(PACKAGE_ROOT, "scripts", "verify-skills.sh"),
+      candidates: [{ command: "sh", args: [] }]
+    };
+  }
+
+  return {
+    label: "Linux/Unix",
+    script: path.join(PACKAGE_ROOT, "scripts", "verify-skills.sh"),
+    candidates: [{ command: "sh", args: [] }]
+  };
+}
+
+function runVerificationScript(targetRoot) {
+  const selected = scriptForPlatform();
+
+  if (!exists(selected.script)) {
+    throw new Error(`Missing ${selected.label} verification script: ${selected.script}`);
+  }
+
+  let lastResult = null;
+  for (const candidate of selected.candidates) {
+    const result = spawnSync(
+      candidate.command,
+      [...candidate.args, selected.script],
+      {
+        cwd: targetRoot,
+        stdio: "inherit",
+        shell: false
+      }
+    );
+
+    if (result.error && result.error.code === "ENOENT") {
+      lastResult = result;
+      continue;
+    }
+
+    if (result.error) {
+      throw result.error;
+    }
+
+    return result.status || 0;
+  }
+
+  if (lastResult && lastResult.error) {
+    throw new Error(`Could not find a shell for ${selected.label} verification: ${lastResult.error.message}`);
+  }
+
+  return 1;
 }
 
 function readJson(filePath) {
@@ -220,6 +290,14 @@ function commandDoctor(parsed) {
         failures.push(`index routing examples path is missing: ${index.routing.examplesPath}`);
       }
     }
+
+    if (index.verification && index.verification.scripts) {
+      for (const [name, scriptPath] of Object.entries(index.verification.scripts)) {
+        if (!exists(path.join(targetRoot, scriptPath))) {
+          failures.push(`index verification script '${name}' is missing: ${scriptPath}`);
+        }
+      }
+    }
   }
 
   if (routing) {
@@ -281,6 +359,24 @@ function commandDoctor(parsed) {
   console.log(`Routing categories: ${routing ? routing.categories.length : 0}`);
 }
 
+function commandVerify(parsed) {
+  const targetArg = parsed.values.target || parsed.positional[1] || ".";
+  const targetRoot = path.resolve(process.cwd(), targetArg);
+  const selected = scriptForPlatform();
+
+  console.log(`Detected OS: ${selected.label}`);
+  console.log(`Verification script: ${path.relative(process.cwd(), selected.script)}`);
+
+  try {
+    const status = runVerificationScript(targetRoot);
+    process.exitCode = status;
+  } catch (error) {
+    console.warn(`Script verification unavailable: ${error.message}`);
+    console.warn("Falling back to built-in doctor.");
+    commandDoctor(parsed);
+  }
+}
+
 function commandList(parsed) {
   const targetArg = parsed.values.target || parsed.positional[1] || ".";
   const targetRoot = path.resolve(process.cwd(), targetArg);
@@ -313,6 +409,11 @@ function main() {
 
   if (command === "init") {
     commandInit(parsed);
+    return;
+  }
+
+  if (command === "verify") {
+    commandVerify(parsed);
     return;
   }
 

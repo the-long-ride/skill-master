@@ -34,6 +34,17 @@ The human may write natural language after the command:
 - Route state-changing, regulated, or sensitive workflows with security and compliance as an adjacent category.
 - If no category fits, use `skill-category-router` and propose a new category boundary.
 
+## Verification Script Selection
+
+When the human asks to verify Skill Master or a target skill, detect the current OS and choose the corresponding script:
+
+- Windows: run `pwsh scripts/verify-skills.ps1`.
+- Linux: run `sh scripts/verify-skills.sh`.
+- macOS: run `sh scripts/verify-skills.sh`.
+- Any OS with Node.js: `node scripts/verify-skills.js` is a portable fallback.
+
+If using the npm CLI, prefer `npx skill-master verify .`; it detects the OS and runs the matching script.
+
 ## What To Produce
 
 Return a concrete skill blueprint. The output must help an AI agent create or improve the target `SKILL.md`.

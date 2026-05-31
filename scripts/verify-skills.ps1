@@ -155,6 +155,14 @@ else {
     if (-not (Test-Path $index.routing.examplesPath)) {
         $routingFailures += "Index routing examples path is missing: $($index.routing.examplesPath)"
     }
+
+    if ($index.verification -and $index.verification.scripts) {
+        foreach ($script in $index.verification.scripts.PSObject.Properties) {
+            if (-not (Test-Path $script.Value)) {
+                $routingFailures += "Index verification script '$($script.Name)' is missing: $($script.Value)"
+            }
+        }
+    }
 }
 
 if (-not (Test-Path $CommandFile)) {

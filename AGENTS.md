@@ -31,7 +31,7 @@ This source supports:
 - Claude-style skill runtimes
 - Web interface LLM chat (manual prompt pack)
 
-See `docs/WEB-CHAT-PACK.md` for web-chat usage.
+See `GUIDELINE.md` and `docs/WEB-CHAT-PACK.md` for web-chat usage.
 
 ## Local Verification
 
@@ -47,8 +47,14 @@ Two supported modes:
 Run:
 
 ```powershell
-pwsh scripts/verify-skills.ps1
+npx skill-master verify .
 ```
+
+OS-specific alternatives:
+
+- Windows: `pwsh scripts/verify-skills.ps1`
+- Linux/macOS: `sh scripts/verify-skills.sh`
+- Any OS with Node.js: `node scripts/verify-skills.js`
 
 Outputs:
 

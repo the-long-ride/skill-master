@@ -15,6 +15,16 @@
     "path": "src/routing/skill-master-routing.json",
     "examplesPath": "skills/skill-category-router/references/routing-examples.md"
   },
+  "verification": {
+    "autoCommand": "npx skill-master verify .",
+    "fallbackCommand": "npx skill-master doctor .",
+    "scripts": {
+      "windows": "scripts/verify-skills.ps1",
+      "linux": "scripts/verify-skills.sh",
+      "macos": "scripts/verify-skills.sh",
+      "node": "scripts/verify-skills.js"
+    }
+  },
   "skills": [
     {
       "name": "creating-skills",
