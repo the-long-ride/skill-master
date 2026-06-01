@@ -11,6 +11,7 @@ All notable changes to Skill Master will be documented in this file.
 - Added forward-test prompts for every advisor routing category.
 - Tightened validation for YAML frontmatter, skill folder names, frontmatter/name alignment, and description quality.
 - Enforced `/skill-master` as the only installed and supported slash command.
+- Documented how Skill Master complements built-in skill creators in OpenAI, Claude, Hermes Agent-style, and manual workflows.
 
 ## 0.1.0 - 2026-06-01
 
