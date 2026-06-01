@@ -30,6 +30,22 @@ jobs:
       - name: Check package contents
         run: npm pack --dry-run
 
+      - name: Configure npm authentication
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::error::Missing NPM_TOKEN repository secret"
+            exit 1
+          fi
+          npm config set registry "https://registry.npmjs.org"
+          npm config set //registry.npmjs.org/:_authToken "$NODE_AUTH_TOKEN"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify npm authentication
+        run: npm whoami --registry "https://registry.npmjs.org"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish package
         run: npm publish --access public
         env:
