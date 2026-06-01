@@ -1,0 +1,8 @@
+name: "{{skillName}}"
+display_name: "{{skillTitle}}"
+description: "{{description}}"
+metadata:
+  source: "skill-master"
+  primary_category: "{{categoryId}}"
+  advisor_skill: "{{advisorSkill}}"
+  codex_native: {{codexNative}}

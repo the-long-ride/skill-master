@@ -3,6 +3,10 @@
 const fs = require("fs");
 const path = require("path");
 
+const SKILL_NAME_PATTERN = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+const MAX_SKILL_NAME_LENGTH = 63;
+const FRONTMATTER_KEYS = new Set(["name", "description"]);
+
 function parseArgs(argv) {
   const options = {
     root: "skills",
@@ -10,7 +14,8 @@ function parseArgs(argv) {
     reportDir: "generated-reports",
     routingFile: "src/routing/skill-master-routing.json",
     commandFile: "commands/skill-master.md",
-    indexFile: "skill-index.json"
+    indexFile: "skill-index.json",
+    templateFile: "templates/advisors/advisor-blueprints.json"
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -34,6 +39,9 @@ function parseArgs(argv) {
     } else if (arg === "--index-file") {
       options.indexFile = next;
       index += 1;
+    } else if (arg === "--template-file") {
+      options.templateFile = next;
+      index += 1;
     } else if (arg === "--help" || arg === "-h") {
       console.log(`Usage: verify-skills.js [options]
 
@@ -44,6 +52,7 @@ Options:
   --routing-file <path>      Routing JSON path. Default: src/routing/skill-master-routing.json
   --command-file <path>      Command markdown path. Default: commands/skill-master.md
   --index-file <path>        Index JSON path. Default: skill-index.json
+  --template-file <path>     Advisor template catalog. Default: templates/advisors/advisor-blueprints.json
 `);
       process.exit(0);
     } else {
@@ -70,6 +79,117 @@ function readJson(filePath) {
   }
 }
 
+function validateSkillNameValue(name) {
+  const failures = [];
+
+  if (!name) {
+    failures.push("skill name is empty");
+    return failures;
+  }
+
+  if (name.length > MAX_SKILL_NAME_LENGTH) {
+    failures.push(`skill name must be ${MAX_SKILL_NAME_LENGTH} characters or fewer`);
+  }
+
+  if (!SKILL_NAME_PATTERN.test(name)) {
+    failures.push("skill name must use lowercase letters, digits, and single hyphens only");
+  }
+
+  if (name.includes("--")) {
+    failures.push("skill name must not contain consecutive hyphens");
+  }
+
+  return failures;
+}
+
+function trimYamlScalar(value) {
+  const trimmed = String(value || "").trim();
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1);
+  }
+
+  return trimmed;
+}
+
+function parseSkillFrontmatter(content) {
+  const normalized = String(content || "").replace(/^\uFEFF/, "");
+  const match = /^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/.exec(normalized);
+  const result = {
+    fields: {},
+    keys: [],
+    errors: []
+  };
+
+  if (!match) {
+    result.errors.push("frontmatter must start the file and close with ---");
+    return result;
+  }
+
+  for (const [index, line] of match[1].split(/\r?\n/).entries()) {
+    if (!line.trim()) {
+      continue;
+    }
+
+    const lineMatch = /^([A-Za-z0-9_-]+):\s*(.*)$/.exec(line);
+    if (!lineMatch) {
+      result.errors.push(`frontmatter line ${index + 1} must be key: value`);
+      continue;
+    }
+
+    const key = lineMatch[1];
+    const value = trimYamlScalar(lineMatch[2]);
+
+    if (Object.prototype.hasOwnProperty.call(result.fields, key)) {
+      result.errors.push(`frontmatter repeats key '${key}'`);
+      continue;
+    }
+
+    result.keys.push(key);
+    result.fields[key] = value;
+  }
+
+  return result;
+}
+
+function descriptionQualityFailures(description) {
+  const failures = [];
+  const value = String(description || "");
+
+  if (!value) {
+    failures.push("description is empty");
+    return failures;
+  }
+
+  if (!value.startsWith("Use when ")) {
+    failures.push("description must start with 'Use when '");
+  }
+
+  if (value.length < 40) {
+    failures.push("description is too short to route reliably");
+  }
+
+  if (value.length > 300) {
+    failures.push("description should be 300 characters or fewer");
+  }
+
+  if (/[\r\n]/.test(value)) {
+    failures.push("description must be a single line");
+  }
+
+  if (/[#`*[\]]/.test(value)) {
+    failures.push("description should not contain markdown formatting");
+  }
+
+  if (/\b(first|then|step\s+\d|follow these steps|execute the following)\b/i.test(value)) {
+    failures.push("description should describe triggering conditions, not workflow steps");
+  }
+
+  return failures;
+}
+
 function walkSkillFiles(rootPath) {
   const files = [];
 
@@ -79,6 +199,27 @@ function walkSkillFiles(rootPath) {
       if (entry.isDirectory()) {
         walk(entryPath);
       } else if (entry.isFile() && entry.name === "SKILL.md") {
+        files.push(entryPath);
+      }
+    }
+  }
+
+  if (exists(rootPath)) {
+    walk(rootPath);
+  }
+
+  return files;
+}
+
+function listMarkdownFiles(rootPath) {
+  const files = [];
+
+  function walk(current) {
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const entryPath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        walk(entryPath);
+      } else if (entry.isFile() && entry.name.toLowerCase().endsWith(".md")) {
         files.push(entryPath);
       }
     }
@@ -101,10 +242,21 @@ function score(condition, pass, fail) {
 
 function auditSkill(filePath) {
   const content = readText(filePath);
+  const folderName = path.basename(path.dirname(filePath));
+  const frontmatter = parseSkillFrontmatter(content);
+  const unsupportedKeys = frontmatter.keys.filter((key) => !FRONTMATTER_KEYS.has(key));
+  const folderNameFailures = validateSkillNameValue(folderName);
+  const frontmatterNameFailures = validateSkillNameValue(frontmatter.fields.name || "");
+  const descriptionFailures = descriptionQualityFailures(frontmatter.fields.description || "");
   const checks = [
-    score(/^name:\s*.+$/m.test(content), "Has name", "Missing name frontmatter"),
-    score(/^description:\s*.+$/m.test(content), "Has description", "Missing description frontmatter"),
-    score(/^description:\s*Use when/m.test(content), "Description starts with Use when", "Description should start with Use when"),
+    score(frontmatter.errors.length === 0, "Has valid YAML frontmatter block", frontmatter.errors.join("; ") || "Invalid frontmatter"),
+    score(frontmatter.keys.length === 2 && unsupportedKeys.length === 0, "Frontmatter only has name and description", unsupportedKeys.length > 0 ? `Unsupported frontmatter keys: ${unsupportedKeys.join(", ")}` : "Frontmatter must contain exactly name and description"),
+    score(Boolean(frontmatter.fields.name), "Has name", "Missing name frontmatter"),
+    score(folderNameFailures.length === 0, "Folder name is valid", folderNameFailures.join("; ")),
+    score(frontmatterNameFailures.length === 0, "Frontmatter name is valid", frontmatterNameFailures.join("; ")),
+    score(frontmatter.fields.name === folderName, "Frontmatter name matches folder", `Frontmatter name should match folder '${folderName}'`),
+    score(Boolean(frontmatter.fields.description), "Has description", "Missing description frontmatter"),
+    score(descriptionFailures.length === 0, "Description is trigger-only and routable", descriptionFailures.join("; ")),
     score(/^##\s+Workflow/m.test(content), "Has Workflow section", "Missing Workflow section"),
     score(/^##\s+Failure Modes/m.test(content), "Has Failure Modes section", "Missing Failure Modes section"),
     score(/^##\s+Output Format/m.test(content), "Has Output Format section", "Missing Output Format section")
@@ -159,11 +311,31 @@ function writeReports(results, reportDir) {
 
 function validateRouting(options) {
   const failures = [];
+  const commandRoot = path.dirname(options.commandFile);
+  const expectedCommand = path.normalize(options.commandFile);
+  const commandFiles = listMarkdownFiles(commandRoot).map((filePath) => path.normalize(filePath));
+  const unexpectedCommands = commandFiles.filter((filePath) => filePath !== expectedCommand);
+
+  if (!exists(commandRoot)) {
+    failures.push(`Missing commands directory: ${commandRoot}`);
+  }
+
+  if (unexpectedCommands.length > 0) {
+    failures.push(`Only /skill-master is allowed; remove extra command files: ${unexpectedCommands.join(", ")}`);
+  }
+
+  if (commandFiles.length !== 1 || !exists(options.commandFile)) {
+    failures.push("commands/ must expose exactly one slash command: /skill-master");
+  }
 
   if (!exists(options.indexFile)) {
     failures.push(`Missing index file: ${options.indexFile}`);
   } else {
     const index = readJson(options.indexFile);
+
+    if (!Array.isArray(index.commands) || index.commands.length !== 1) {
+      failures.push("skill-index.json must list exactly one command: /skill-master");
+    }
 
     for (const skill of index.skills || []) {
       if (!exists(skill.path)) {
@@ -172,6 +344,9 @@ function validateRouting(options) {
     }
 
     for (const command of index.commands || []) {
+      if (command.command !== "/skill-master" || command.path !== "commands/skill-master.md") {
+        failures.push("skill-index.json command entry must expose only /skill-master at commands/skill-master.md");
+      }
       if (!exists(command.path)) {
         failures.push(`Index command '${command.name}' points to missing path: ${command.path}`);
       }
@@ -186,6 +361,14 @@ function validateRouting(options) {
       }
       if (!exists(index.routing.examplesPath)) {
         failures.push(`Index routing examples path is missing: ${index.routing.examplesPath}`);
+      }
+    }
+
+    if (index.templates) {
+      for (const [name, templatePath] of Object.entries(index.templates)) {
+        if (!exists(templatePath)) {
+          failures.push(`Index template '${name}' is missing: ${templatePath}`);
+        }
       }
     }
 
@@ -235,9 +418,34 @@ function validateRouting(options) {
       if (!category.negativeExamples || category.negativeExamples.length < 1) {
         failures.push(`Routing category '${category.category}' should include at least one negativeExamples entry`);
       }
+      if (!category.forwardTestPrompts || category.forwardTestPrompts.length < 2) {
+        failures.push(`Routing category '${category.category}' should include at least two forwardTestPrompts`);
+      }
       for (const adjacent of category.adjacentCategories || []) {
         if (!categoryIds.has(adjacent)) {
           failures.push(`Routing category '${category.category}' points to unknown adjacent category: ${adjacent}`);
+        }
+      }
+    }
+
+    if (!exists(options.templateFile)) {
+      failures.push(`Missing advisor template catalog: ${options.templateFile}`);
+    } else {
+      const templates = readJson(options.templateFile).categories || {};
+      for (const category of categories) {
+        const template = templates[category.category];
+        if (!template) {
+          failures.push(`Missing advisor template for routing category '${category.category}'`);
+          continue;
+        }
+        if (!Array.isArray(template.workflowFocus) || template.workflowFocus.length < 2) {
+          failures.push(`Advisor template '${category.category}' should include at least two workflowFocus entries`);
+        }
+        if (!Array.isArray(template.recommendedReferences) || template.recommendedReferences.length < 1) {
+          failures.push(`Advisor template '${category.category}' should include recommendedReferences`);
+        }
+        if (!template.outputFormat) {
+          failures.push(`Advisor template '${category.category}' should include outputFormat`);
         }
       }
     }
@@ -266,6 +474,13 @@ function main() {
   const routingFailures = validateRouting(options);
   if (routingFailures.length > 0) {
     console.error(`Routing validation failed:\n${routingFailures.join("\n")}`);
+    process.exitCode = 1;
+    return;
+  }
+
+  const failedSkills = results.filter((result) => result.Fail > 0);
+  if (failedSkills.length > 0) {
+    console.error(`Skill validation failed for ${failedSkills.length} file(s). See ${paths.markdownPath}`);
     process.exitCode = 1;
     return;
   }

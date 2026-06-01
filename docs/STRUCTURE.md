@@ -10,6 +10,7 @@ This repository uses a root source layout: editable sources live at the reposito
 | `commands/` | Human-facing slash commands. `/skill-master` lives here. |
 | `src/routing/` | Machine-readable routing data used by commands and agents. |
 | `scripts/` | Repeatable local verification and maintenance tools. |
+| `templates/` | Scaffold templates used by `skill-master create`. |
 | `docs/` | Human-facing docs and web-chat prompt packs. |
 | `skill-index.json` | Machine-readable index of commands, routing, and skills. |
 | `package.json` | npm package metadata and CLI entry definition. |
@@ -23,6 +24,18 @@ This repository uses a root source layout: editable sources live at the reposito
 3. Command reads `src/routing/skill-master-routing.json`.
 4. Router selects one advisor from `skills/`.
 5. Advisor returns a concrete blueprint for the target skill.
+
+`commands/` must contain exactly one markdown command file: `skill-master.md`. Advisor categories are skills, not slash commands.
+
+## Scaffold Flow
+
+1. Human or agent selects a primary category through `/skill-master`.
+2. Run `npx skill-master create <name> --category <category>`.
+3. The CLI reads `src/routing/skill-master-routing.json`.
+4. The CLI loads `templates/advisors/advisor-blueprints.json`.
+5. The CLI writes a target skill folder with `SKILL.md`, `references/blueprint.md`, and `references/forward-test-prompts.md`.
+6. Optional `--with-openai` writes `agents/openai.yaml`.
+7. Optional `--codex-native` writes the Skill Creator six-step reference.
 
 ## Verification
 

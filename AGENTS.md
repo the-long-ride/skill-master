@@ -76,7 +76,9 @@ Machine-readable skill metadata is in:
 This repository includes advisory skills that help humans design better AI agent skills by category.
 
 - The single human-facing slash command is `/skill-master`, backed by `commands/skill-master.md`.
+- Do not add category-specific slash commands; `commands/` must expose exactly one markdown command file.
 - `/skill-master` routes natural language through `src/routing/skill-master-routing.json`, then loads the selected advisor skill.
+- `skill-master create <name>` scaffolds a target skill from the selected routed category.
 - Start with `skills/skill-category-router/SKILL.md` when the category is unclear.
 - Use `advise-*-skills` folders when the human already knows the category.
 - Category advisors consult on skill design; they should not perform the underlying domain task unless the user separately asks for that work.
@@ -90,6 +92,7 @@ This repository follows a Caveman-style source layout:
 - `commands/` contains human-facing slash commands, currently `/skill-master`.
 - `src/routing/` contains internal routing data used by commands and agents.
 - `scripts/` contains repeatable verification and maintenance tooling.
+- `templates/` contains scaffold templates and advisor-specific blueprints.
 - `docs/` contains human-facing prompt packs and usage docs.
 - `generated-reports/` contains verifier output and should not be treated as source.
 - `.agents/` is a legacy compatibility area on this machine; do not edit it as the source of truth.

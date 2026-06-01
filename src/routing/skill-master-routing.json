@@ -16,7 +16,15 @@
       "advisorSkill": "advise-skill-governance-skills",
       "advisorPath": "skills/advise-skill-governance-skills/SKILL.md",
       "routeWhen": "The human wants to author, audit, review, migrate, publish, or govern skills themselves.",
-      "keywords": ["skill authoring", "skill review", "audit", "governance", "publish", "trigger quality", "compatibility"],
+      "keywords": [
+        "skill authoring",
+        "skill review",
+        "audit",
+        "governance",
+        "publish",
+        "trigger quality",
+        "compatibility"
+      ],
       "exampleRequests": [
         "Review all skills and tell me which are ready.",
         "Help me design a checklist for portable SKILL.md files.",
@@ -26,7 +34,14 @@
         "Build a React UI.",
         "Draft a customer email."
       ],
-      "adjacentCategories": ["agent-orchestration", "security-compliance"]
+      "adjacentCategories": [
+        "agent-orchestration",
+        "security-compliance"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Review all skills and tell me which are ready.",
+        "/skill-master Build a React UI."
+      ]
     },
     {
       "category": "software-engineering",
@@ -34,7 +49,16 @@
       "advisorSkill": "advise-software-engineering-skills",
       "advisorPath": "skills/advise-software-engineering-skills/SKILL.md",
       "routeWhen": "The target skill helps agents inspect, edit, test, review, refactor, migrate, or explain codebases.",
-      "keywords": ["code", "debug", "refactor", "migration", "repository", "test repair", "code review", "developer tooling"],
+      "keywords": [
+        "code",
+        "debug",
+        "refactor",
+        "migration",
+        "repository",
+        "test repair",
+        "code review",
+        "developer tooling"
+      ],
       "exampleRequests": [
         "Make a skill for reviewing pull requests in TypeScript repos.",
         "I need a skill that migrates old Express routes to Fastify.",
@@ -44,7 +68,15 @@
         "Design a UI layout skill without codebase workflows.",
         "Analyze revenue metrics."
       ],
-      "adjacentCategories": ["testing-qa", "devops-cloud", "security-compliance"]
+      "adjacentCategories": [
+        "testing-qa",
+        "devops-cloud",
+        "security-compliance"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make a skill for reviewing pull requests in TypeScript repos.",
+        "/skill-master Design a UI layout skill without codebase workflows."
+      ]
     },
     {
       "category": "frontend-design",
@@ -52,7 +84,16 @@
       "advisorSkill": "advise-frontend-design-skills",
       "advisorPath": "skills/advise-frontend-design-skills/SKILL.md",
       "routeWhen": "The target skill helps agents build or improve frontend UI, UX, visual implementation, responsive layouts, or design-system usage.",
-      "keywords": ["frontend", "UI", "UX", "responsive", "component", "design system", "web app", "visual polish"],
+      "keywords": [
+        "frontend",
+        "UI",
+        "UX",
+        "responsive",
+        "component",
+        "design system",
+        "web app",
+        "visual polish"
+      ],
       "exampleRequests": [
         "Create a skill for building polished SaaS dashboards.",
         "Help me design a responsive layout repair skill.",
@@ -62,7 +103,14 @@
         "Review a Figma file as a design critique without implementation.",
         "Run browser regression tests."
       ],
-      "adjacentCategories": ["testing-qa", "design-ux-work"]
+      "adjacentCategories": [
+        "testing-qa",
+        "design-ux-work"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a skill for building polished SaaS dashboards.",
+        "/skill-master Review a Figma file as a design critique without implementation."
+      ]
     },
     {
       "category": "testing-qa",
@@ -70,7 +118,16 @@
       "advisorSkill": "advise-testing-qa-skills",
       "advisorPath": "skills/advise-testing-qa-skills/SKILL.md",
       "routeWhen": "The target skill designs repeatable quality checks, test automation, browser verification, accessibility checks, or regression workflows.",
-      "keywords": ["test", "QA", "Playwright", "regression", "accessibility", "performance", "coverage", "smoke test"],
+      "keywords": [
+        "test",
+        "QA",
+        "Playwright",
+        "regression",
+        "accessibility",
+        "performance",
+        "coverage",
+        "smoke test"
+      ],
       "exampleRequests": [
         "Design a Playwright visual regression skill.",
         "Make a skill for triaging failing CI tests.",
@@ -80,7 +137,15 @@
         "Use a browser to operate a third-party site.",
         "Write product requirements."
       ],
-      "adjacentCategories": ["frontend-design", "software-engineering", "browser-automation"]
+      "adjacentCategories": [
+        "frontend-design",
+        "software-engineering",
+        "browser-automation"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Design a Playwright visual regression skill.",
+        "/skill-master Use a browser to operate a third-party site."
+      ]
     },
     {
       "category": "documents-office",
@@ -88,7 +153,17 @@
       "advisorSkill": "advise-documents-office-skills",
       "advisorPath": "skills/advise-documents-office-skills/SKILL.md",
       "routeWhen": "The target skill creates, edits, extracts, converts, validates, or preserves formatting in PDF, DOCX, PPTX, XLSX, forms, or office reports.",
-      "keywords": ["PDF", "DOCX", "PPTX", "XLSX", "spreadsheet", "deck", "document", "form", "formatting"],
+      "keywords": [
+        "PDF",
+        "DOCX",
+        "PPTX",
+        "XLSX",
+        "spreadsheet",
+        "deck",
+        "document",
+        "form",
+        "formatting"
+      ],
       "exampleRequests": [
         "Make a skill for extracting terms from PDFs.",
         "Design a PowerPoint report generation skill.",
@@ -98,7 +173,14 @@
         "Analyze SQL warehouse data.",
         "Review contract risk without file-format handling."
       ],
-      "adjacentCategories": ["data-analytics", "legal-work"]
+      "adjacentCategories": [
+        "data-analytics",
+        "legal-work"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make a skill for extracting terms from PDFs.",
+        "/skill-master Analyze SQL warehouse data."
+      ]
     },
     {
       "category": "data-analytics",
@@ -106,7 +188,17 @@
       "advisorSkill": "advise-data-analytics-skills",
       "advisorPath": "skills/advise-data-analytics-skills/SKILL.md",
       "routeWhen": "The target skill helps agents query, clean, validate, analyze, visualize, or interpret datasets, metrics, SQL, dashboards, notebooks, or spreadsheets.",
-      "keywords": ["data", "SQL", "BI", "metrics", "dashboard", "notebook", "analysis", "warehouse", "chart"],
+      "keywords": [
+        "data",
+        "SQL",
+        "BI",
+        "metrics",
+        "dashboard",
+        "notebook",
+        "analysis",
+        "warehouse",
+        "chart"
+      ],
       "exampleRequests": [
         "Create a skill for answering product metrics questions from BigQuery.",
         "Design a CSV cleaning and profiling skill.",
@@ -116,7 +208,14 @@
         "Find policy docs across the company wiki.",
         "Prepare finance close entries."
       ],
-      "adjacentCategories": ["finance-accounting", "enterprise-search-knowledge"]
+      "adjacentCategories": [
+        "finance-accounting",
+        "enterprise-search-knowledge"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a skill for answering product metrics questions from BigQuery.",
+        "/skill-master Find policy docs across the company wiki."
+      ]
     },
     {
       "category": "research-rag",
@@ -124,7 +223,16 @@
       "advisorSkill": "advise-research-rag-skills",
       "advisorPath": "skills/advise-research-rag-skills/SKILL.md",
       "routeWhen": "The target skill gathers and synthesizes evidence from web, papers, public sources, or local corpora with citations and uncertainty handling.",
-      "keywords": ["research", "RAG", "citations", "sources", "literature", "web search", "knowledge base", "evidence"],
+      "keywords": [
+        "research",
+        "RAG",
+        "citations",
+        "sources",
+        "literature",
+        "web search",
+        "knowledge base",
+        "evidence"
+      ],
       "exampleRequests": [
         "Design a literature review skill.",
         "Make a source verification skill for market research.",
@@ -134,7 +242,14 @@
         "Search internal company email and wikis.",
         "Build a CRM account brief."
       ],
-      "adjacentCategories": ["enterprise-search-knowledge", "science-domain"]
+      "adjacentCategories": [
+        "enterprise-search-knowledge",
+        "science-domain"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Design a literature review skill.",
+        "/skill-master Search internal company email and wikis."
+      ]
     },
     {
       "category": "memory-personalization",
@@ -142,7 +257,15 @@
       "advisorSkill": "advise-memory-personalization-skills",
       "advisorPath": "skills/advise-memory-personalization-skills/SKILL.md",
       "routeWhen": "The target skill stores, retrieves, updates, scopes, or forgets durable user, project, preference, or relationship context.",
-      "keywords": ["memory", "preferences", "personalization", "recall", "forget", "project context", "user profile"],
+      "keywords": [
+        "memory",
+        "preferences",
+        "personalization",
+        "recall",
+        "forget",
+        "project context",
+        "user profile"
+      ],
       "exampleRequests": [
         "Create a skill that curates durable project memories.",
         "Design a user preference update skill.",
@@ -152,7 +275,14 @@
         "Summarize a meeting transcript once.",
         "Search company docs without persistence."
       ],
-      "adjacentCategories": ["security-compliance", "productivity-workplace"]
+      "adjacentCategories": [
+        "security-compliance",
+        "productivity-workplace"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a skill that curates durable project memories.",
+        "/skill-master Summarize a meeting transcript once."
+      ]
     },
     {
       "category": "tool-integration",
@@ -160,7 +290,17 @@
       "advisorSkill": "advise-tool-integration-skills",
       "advisorPath": "skills/advise-tool-integration-skills/SKILL.md",
       "routeWhen": "The target skill depends on APIs, MCP servers, SaaS connectors, schemas, auth, or tool-calling contracts.",
-      "keywords": ["API", "MCP", "connector", "auth", "schema", "tool", "SaaS", "integration", "webhook"],
+      "keywords": [
+        "API",
+        "MCP",
+        "connector",
+        "auth",
+        "schema",
+        "tool",
+        "SaaS",
+        "integration",
+        "webhook"
+      ],
       "exampleRequests": [
         "Design a skill for safely using a GitHub MCP server.",
         "Make a Salesforce connector skill.",
@@ -170,7 +310,15 @@
         "Write a skill for generic code review.",
         "Draft a marketing campaign without tools."
       ],
-      "adjacentCategories": ["security-compliance", "browser-automation", "enterprise-search-knowledge"]
+      "adjacentCategories": [
+        "security-compliance",
+        "browser-automation",
+        "enterprise-search-knowledge"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Design a skill for safely using a GitHub MCP server.",
+        "/skill-master Write a skill for generic code review."
+      ]
     },
     {
       "category": "browser-automation",
@@ -178,7 +326,16 @@
       "advisorSkill": "advise-browser-automation-skills",
       "advisorPath": "skills/advise-browser-automation-skills/SKILL.md",
       "routeWhen": "The target skill operates websites through a browser for navigation, scraping, form filling, screenshots, downloads, or page-state inspection.",
-      "keywords": ["browser", "scrape", "form filling", "screenshot", "web navigation", "Playwright", "download", "page state"],
+      "keywords": [
+        "browser",
+        "scrape",
+        "form filling",
+        "screenshot",
+        "web navigation",
+        "Playwright",
+        "download",
+        "page state"
+      ],
       "exampleRequests": [
         "Make a skill for filling vendor portal forms.",
         "Design a website screenshot capture skill.",
@@ -188,7 +345,15 @@
         "Test our own web app regression suite.",
         "Use an API connector instead of a browser."
       ],
-      "adjacentCategories": ["tool-integration", "testing-qa", "security-compliance"]
+      "adjacentCategories": [
+        "tool-integration",
+        "testing-qa",
+        "security-compliance"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make a skill for filling vendor portal forms.",
+        "/skill-master Test our own web app regression suite."
+      ]
     },
     {
       "category": "agent-orchestration",
@@ -196,7 +361,16 @@
       "advisorSkill": "advise-agent-orchestration-skills",
       "advisorPath": "skills/advise-agent-orchestration-skills/SKILL.md",
       "routeWhen": "The target skill routes work, coordinates multiple agents, plans stages, evaluates outputs, defines handoffs, or controls agent workflow.",
-      "keywords": ["multi-agent", "orchestration", "routing", "planner", "evaluator", "handoff", "parallel", "supervisor"],
+      "keywords": [
+        "multi-agent",
+        "orchestration",
+        "routing",
+        "planner",
+        "evaluator",
+        "handoff",
+        "parallel",
+        "supervisor"
+      ],
       "exampleRequests": [
         "Design a skill router for specialized agents.",
         "Create a multi-agent code review panel skill.",
@@ -206,7 +380,14 @@
         "Create one simple sales call prep skill.",
         "Write a direct PDF editing workflow."
       ],
-      "adjacentCategories": ["skill-governance", "research-rag"]
+      "adjacentCategories": [
+        "skill-governance",
+        "research-rag"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Design a skill router for specialized agents.",
+        "/skill-master Create one simple sales call prep skill."
+      ]
     },
     {
       "category": "devops-cloud",
@@ -214,7 +395,17 @@
       "advisorSkill": "advise-devops-cloud-skills",
       "advisorPath": "skills/advise-devops-cloud-skills/SKILL.md",
       "routeWhen": "The target skill touches CI/CD, deployment, infrastructure, cloud resources, Terraform, Kubernetes, monitoring, incidents, or release operations.",
-      "keywords": ["DevOps", "CI", "CD", "deploy", "cloud", "Terraform", "Kubernetes", "incident", "monitoring"],
+      "keywords": [
+        "DevOps",
+        "CI",
+        "CD",
+        "deploy",
+        "cloud",
+        "Terraform",
+        "Kubernetes",
+        "incident",
+        "monitoring"
+      ],
       "exampleRequests": [
         "Design a Terraform plan review skill.",
         "Make a CI failure triage skill.",
@@ -224,7 +415,15 @@
         "Debug local application code only.",
         "Write business process SOPs."
       ],
-      "adjacentCategories": ["security-compliance", "software-engineering", "operations-process"]
+      "adjacentCategories": [
+        "security-compliance",
+        "software-engineering",
+        "operations-process"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Design a Terraform plan review skill.",
+        "/skill-master Debug local application code only."
+      ]
     },
     {
       "category": "security-compliance",
@@ -232,7 +431,16 @@
       "advisorSkill": "advise-security-compliance-skills",
       "advisorPath": "skills/advise-security-compliance-skills/SKILL.md",
       "routeWhen": "The target skill reviews security, privacy, compliance, secrets, policies, threat models, regulated workflows, or abuse risk.",
-      "keywords": ["security", "compliance", "privacy", "secrets", "threat model", "policy", "regulated", "risk"],
+      "keywords": [
+        "security",
+        "compliance",
+        "privacy",
+        "secrets",
+        "threat model",
+        "policy",
+        "regulated",
+        "risk"
+      ],
       "exampleRequests": [
         "Create a secure code review skill.",
         "Design a compliance evidence review skill.",
@@ -242,7 +450,15 @@
         "Create a normal product roadmap skill.",
         "Draft a friendly customer support reply with no policy risk."
       ],
-      "adjacentCategories": ["legal-work", "devops-cloud", "tool-integration"]
+      "adjacentCategories": [
+        "legal-work",
+        "devops-cloud",
+        "tool-integration"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a secure code review skill.",
+        "/skill-master Create a normal product roadmap skill."
+      ]
     },
     {
       "category": "business-operations",
@@ -250,7 +466,15 @@
       "advisorSkill": "advise-business-operations-skills",
       "advisorPath": "skills/advise-business-operations-skills/SKILL.md",
       "routeWhen": "The target skill supports cross-functional planning, approvals, stakeholder coordination, operating rhythms, or business process automation not owned by a more specific role.",
-      "keywords": ["business operations", "planning", "approval", "stakeholder", "operating rhythm", "business process", "QBR"],
+      "keywords": [
+        "business operations",
+        "planning",
+        "approval",
+        "stakeholder",
+        "operating rhythm",
+        "business process",
+        "QBR"
+      ],
       "exampleRequests": [
         "Create a skill for quarterly business review prep.",
         "Design a cross-functional approval packet skill.",
@@ -260,7 +484,14 @@
         "Sales pipeline review.",
         "Finance close reconciliation."
       ],
-      "adjacentCategories": ["operations-process", "productivity-workplace"]
+      "adjacentCategories": [
+        "operations-process",
+        "productivity-workplace"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a skill for quarterly business review prep.",
+        "/skill-master Sales pipeline review."
+      ]
     },
     {
       "category": "sales-revenue",
@@ -268,7 +499,18 @@
       "advisorSkill": "advise-sales-revenue-skills",
       "advisorPath": "skills/advise-sales-revenue-skills/SKILL.md",
       "routeWhen": "The target skill helps sales or revenue teams with account research, call prep, outreach, CRM hygiene, pipeline review, forecasts, renewals, or deal support.",
-      "keywords": ["sales", "revenue", "CRM", "account", "prospect", "pipeline", "deal", "outreach", "renewal", "forecast"],
+      "keywords": [
+        "sales",
+        "revenue",
+        "CRM",
+        "account",
+        "prospect",
+        "pipeline",
+        "deal",
+        "outreach",
+        "renewal",
+        "forecast"
+      ],
       "exampleRequests": [
         "Make a skill for sales call prep with CRM context.",
         "Design a pipeline review skill.",
@@ -278,7 +520,15 @@
         "Handle post-sale support tickets.",
         "Plan a brand awareness campaign."
       ],
-      "adjacentCategories": ["marketing-growth", "customer-support", "tool-integration"]
+      "adjacentCategories": [
+        "marketing-growth",
+        "customer-support",
+        "tool-integration"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make a skill for sales call prep with CRM context.",
+        "/skill-master Handle post-sale support tickets."
+      ]
     },
     {
       "category": "customer-support",
@@ -286,7 +536,16 @@
       "advisorSkill": "advise-customer-support-skills",
       "advisorPath": "skills/advise-customer-support-skills/SKILL.md",
       "routeWhen": "The target skill helps support or success teams with tickets, case triage, response drafts, escalations, customer context, help-center updates, or handoffs.",
-      "keywords": ["support", "customer success", "ticket", "case", "escalation", "help center", "SLA", "bug handoff"],
+      "keywords": [
+        "support",
+        "customer success",
+        "ticket",
+        "case",
+        "escalation",
+        "help center",
+        "SLA",
+        "bug handoff"
+      ],
       "exampleRequests": [
         "Create a ticket triage skill.",
         "Design a customer escalation summary skill.",
@@ -296,7 +555,15 @@
         "Prospecting new accounts.",
         "Drafting campaign emails."
       ],
-      "adjacentCategories": ["sales-revenue", "enterprise-search-knowledge", "security-compliance"]
+      "adjacentCategories": [
+        "sales-revenue",
+        "enterprise-search-knowledge",
+        "security-compliance"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a ticket triage skill.",
+        "/skill-master Prospecting new accounts."
+      ]
     },
     {
       "category": "product-management",
@@ -304,7 +571,17 @@
       "advisorSkill": "advise-product-management-skills",
       "advisorPath": "skills/advise-product-management-skills/SKILL.md",
       "routeWhen": "The target skill helps PMs with discovery, PRDs, specs, roadmaps, prioritization, launch planning, stakeholder updates, user research, or decision logs.",
-      "keywords": ["product", "PM", "PRD", "roadmap", "requirements", "prioritization", "launch", "user research", "spec"],
+      "keywords": [
+        "product",
+        "PM",
+        "PRD",
+        "roadmap",
+        "requirements",
+        "prioritization",
+        "launch",
+        "user research",
+        "spec"
+      ],
       "exampleRequests": [
         "Make a PRD drafting skill.",
         "Design a roadmap prioritization skill.",
@@ -314,7 +591,15 @@
         "Implement the frontend UI.",
         "Run financial close."
       ],
-      "adjacentCategories": ["design-ux-work", "data-analytics", "software-engineering"]
+      "adjacentCategories": [
+        "design-ux-work",
+        "data-analytics",
+        "software-engineering"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make a PRD drafting skill.",
+        "/skill-master Implement the frontend UI."
+      ]
     },
     {
       "category": "marketing-growth",
@@ -322,7 +607,18 @@
       "advisorSkill": "advise-marketing-growth-skills",
       "advisorPath": "skills/advise-marketing-growth-skills/SKILL.md",
       "routeWhen": "The target skill helps marketing or growth teams with campaigns, content briefs, SEO, positioning, brand voice, lifecycle emails, launch messaging, or performance reporting.",
-      "keywords": ["marketing", "growth", "campaign", "SEO", "brand", "positioning", "GTM", "email", "content", "launch"],
+      "keywords": [
+        "marketing",
+        "growth",
+        "campaign",
+        "SEO",
+        "brand",
+        "positioning",
+        "GTM",
+        "email",
+        "content",
+        "launch"
+      ],
       "exampleRequests": [
         "Create a campaign brief skill.",
         "Design a lifecycle email drafting skill.",
@@ -332,7 +628,15 @@
         "Send one-to-one sales outreach.",
         "Answer customer support tickets."
       ],
-      "adjacentCategories": ["sales-revenue", "creative-media", "data-analytics"]
+      "adjacentCategories": [
+        "sales-revenue",
+        "creative-media",
+        "data-analytics"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a campaign brief skill.",
+        "/skill-master Send one-to-one sales outreach."
+      ]
     },
     {
       "category": "finance-accounting",
@@ -340,7 +644,18 @@
       "advisorSkill": "advise-finance-accounting-skills",
       "advisorPath": "skills/advise-finance-accounting-skills/SKILL.md",
       "routeWhen": "The target skill helps finance teams with budgeting, forecasting, invoices, expenses, reconciliation, close workflows, financial statements, controls, or audit support.",
-      "keywords": ["finance", "accounting", "budget", "forecast", "invoice", "expense", "close", "reconcile", "audit", "financial report"],
+      "keywords": [
+        "finance",
+        "accounting",
+        "budget",
+        "forecast",
+        "invoice",
+        "expense",
+        "close",
+        "reconcile",
+        "audit",
+        "financial report"
+      ],
       "exampleRequests": [
         "Make an invoice review skill.",
         "Design a month-end close checklist skill.",
@@ -350,7 +665,15 @@
         "Analyze product usage metrics only.",
         "Draft a legal contract review."
       ],
-      "adjacentCategories": ["data-analytics", "security-compliance", "legal-work"]
+      "adjacentCategories": [
+        "data-analytics",
+        "security-compliance",
+        "legal-work"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make an invoice review skill.",
+        "/skill-master Analyze product usage metrics only."
+      ]
     },
     {
       "category": "people-hr",
@@ -358,7 +681,17 @@
       "advisorSkill": "advise-people-hr-skills",
       "advisorPath": "skills/advise-people-hr-skills/SKILL.md",
       "routeWhen": "The target skill helps people teams with recruiting, onboarding, employee communications, policy lookup, performance cycles, workforce planning, or HR tickets.",
-      "keywords": ["HR", "people", "recruiting", "onboarding", "performance", "employee", "policy", "workforce", "interview"],
+      "keywords": [
+        "HR",
+        "people",
+        "recruiting",
+        "onboarding",
+        "performance",
+        "employee",
+        "policy",
+        "workforce",
+        "interview"
+      ],
       "exampleRequests": [
         "Create an onboarding plan skill.",
         "Design a recruiting screen rubric skill.",
@@ -368,7 +701,15 @@
         "Write a generic meeting summary.",
         "Review source code security."
       ],
-      "adjacentCategories": ["legal-work", "security-compliance", "productivity-workplace"]
+      "adjacentCategories": [
+        "legal-work",
+        "security-compliance",
+        "productivity-workplace"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create an onboarding plan skill.",
+        "/skill-master Write a generic meeting summary."
+      ]
     },
     {
       "category": "legal-work",
@@ -376,7 +717,17 @@
       "advisorSkill": "advise-legal-work-skills",
       "advisorPath": "skills/advise-legal-work-skills/SKILL.md",
       "routeWhen": "The target skill supports legal operations, contract intake, clause extraction, playbook review, redline summaries, matter timelines, compliance evidence, or legal workflow assistance.",
-      "keywords": ["legal", "contract", "clause", "NDA", "redline", "matter", "playbook", "compliance evidence", "risk"],
+      "keywords": [
+        "legal",
+        "contract",
+        "clause",
+        "NDA",
+        "redline",
+        "matter",
+        "playbook",
+        "compliance evidence",
+        "risk"
+      ],
       "exampleRequests": [
         "Create a contract intake skill.",
         "Design a clause extraction skill.",
@@ -386,7 +737,15 @@
         "Edit DOCX formatting only.",
         "Answer HR policy questions without legal review."
       ],
-      "adjacentCategories": ["security-compliance", "documents-office", "finance-accounting"]
+      "adjacentCategories": [
+        "security-compliance",
+        "documents-office",
+        "finance-accounting"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a contract intake skill.",
+        "/skill-master Edit DOCX formatting only."
+      ]
     },
     {
       "category": "operations-process",
@@ -394,7 +753,17 @@
       "advisorSkill": "advise-operations-process-skills",
       "advisorPath": "skills/advise-operations-process-skills/SKILL.md",
       "routeWhen": "The target skill helps teams run SOPs, vendor coordination, procurement, inventory, scheduling, project operations, handoffs, or process audits.",
-      "keywords": ["operations", "process", "SOP", "vendor", "procurement", "inventory", "scheduling", "handoff", "project operations"],
+      "keywords": [
+        "operations",
+        "process",
+        "SOP",
+        "vendor",
+        "procurement",
+        "inventory",
+        "scheduling",
+        "handoff",
+        "project operations"
+      ],
       "exampleRequests": [
         "Create an SOP builder skill.",
         "Design a vendor follow-up skill.",
@@ -404,7 +773,15 @@
         "Personal meeting notes.",
         "Sales opportunity review."
       ],
-      "adjacentCategories": ["business-operations", "productivity-workplace", "finance-accounting"]
+      "adjacentCategories": [
+        "business-operations",
+        "productivity-workplace",
+        "finance-accounting"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create an SOP builder skill.",
+        "/skill-master Personal meeting notes."
+      ]
     },
     {
       "category": "productivity-workplace",
@@ -412,7 +789,17 @@
       "advisorSkill": "advise-productivity-workplace-skills",
       "advisorPath": "skills/advise-productivity-workplace-skills/SKILL.md",
       "routeWhen": "The target skill helps an individual or team with meetings, notes, tasks, calendars, email drafts, weekly reviews, personal context, or executive assistant workflows.",
-      "keywords": ["productivity", "meeting", "calendar", "email", "notes", "tasks", "assistant", "weekly review", "action items"],
+      "keywords": [
+        "productivity",
+        "meeting",
+        "calendar",
+        "email",
+        "notes",
+        "tasks",
+        "assistant",
+        "weekly review",
+        "action items"
+      ],
       "exampleRequests": [
         "Make a meeting brief skill.",
         "Design an action-item extractor skill.",
@@ -422,7 +809,14 @@
         "Support ticket triage.",
         "Marketing campaign planning."
       ],
-      "adjacentCategories": ["memory-personalization", "operations-process"]
+      "adjacentCategories": [
+        "memory-personalization",
+        "operations-process"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make a meeting brief skill.",
+        "/skill-master Support ticket triage."
+      ]
     },
     {
       "category": "enterprise-search-knowledge",
@@ -430,7 +824,15 @@
       "advisorSkill": "advise-enterprise-search-knowledge-skills",
       "advisorPath": "skills/advise-enterprise-search-knowledge-skills/SKILL.md",
       "routeWhen": "The target skill finds, ranks, summarizes, or cites internal company knowledge across email, chat, docs, wikis, tickets, and workplace systems.",
-      "keywords": ["enterprise search", "internal knowledge", "wiki", "company docs", "institutional memory", "policy lookup", "document discovery"],
+      "keywords": [
+        "enterprise search",
+        "internal knowledge",
+        "wiki",
+        "company docs",
+        "institutional memory",
+        "policy lookup",
+        "document discovery"
+      ],
       "exampleRequests": [
         "Create an internal policy answer skill.",
         "Design a project context finder skill.",
@@ -440,7 +842,15 @@
         "Research public web sources only.",
         "Query a structured warehouse metric."
       ],
-      "adjacentCategories": ["research-rag", "tool-integration", "security-compliance"]
+      "adjacentCategories": [
+        "research-rag",
+        "tool-integration",
+        "security-compliance"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create an internal policy answer skill.",
+        "/skill-master Research public web sources only."
+      ]
     },
     {
       "category": "small-business",
@@ -448,7 +858,17 @@
       "advisorSkill": "advise-small-business-skills",
       "advisorPath": "skills/advise-small-business-skills/SKILL.md",
       "routeWhen": "The target skill supports owner-operators or small teams with practical workflows like quotes, invoices, customer messages, scheduling, local services, simple bookkeeping, or lightweight automation.",
-      "keywords": ["small business", "owner", "local service", "quote", "invoice", "schedule", "solo", "customer message", "lightweight"],
+      "keywords": [
+        "small business",
+        "owner",
+        "local service",
+        "quote",
+        "invoice",
+        "schedule",
+        "solo",
+        "customer message",
+        "lightweight"
+      ],
       "exampleRequests": [
         "Make a local service quote skill.",
         "Design a customer review response skill.",
@@ -458,7 +878,15 @@
         "Enterprise finance close.",
         "Large company HR policy workflow."
       ],
-      "adjacentCategories": ["finance-accounting", "marketing-growth", "productivity-workplace"]
+      "adjacentCategories": [
+        "finance-accounting",
+        "marketing-growth",
+        "productivity-workplace"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Make a local service quote skill.",
+        "/skill-master Enterprise finance close."
+      ]
     },
     {
       "category": "design-ux-work",
@@ -466,7 +894,16 @@
       "advisorSkill": "advise-design-ux-work-skills",
       "advisorPath": "skills/advise-design-ux-work-skills/SKILL.md",
       "routeWhen": "The target skill helps design teams with UX research, design critique, briefs, Figma handoff, UX writing, design QA, or stakeholder design communication.",
-      "keywords": ["design", "UX", "Figma", "research synthesis", "critique", "handoff", "UX writing", "prototype"],
+      "keywords": [
+        "design",
+        "UX",
+        "Figma",
+        "research synthesis",
+        "critique",
+        "handoff",
+        "UX writing",
+        "prototype"
+      ],
       "exampleRequests": [
         "Create a Figma handoff review skill.",
         "Design a UX research synthesis skill.",
@@ -476,7 +913,15 @@
         "Implement the frontend code.",
         "Generate final campaign images."
       ],
-      "adjacentCategories": ["frontend-design", "product-management", "creative-media"]
+      "adjacentCategories": [
+        "frontend-design",
+        "product-management",
+        "creative-media"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a Figma handoff review skill.",
+        "/skill-master Implement the frontend code."
+      ]
     },
     {
       "category": "creative-media",
@@ -484,7 +929,17 @@
       "advisorSkill": "advise-creative-media-skills",
       "advisorPath": "skills/advise-creative-media-skills/SKILL.md",
       "routeWhen": "The target skill creates, edits, reviews, or directs image, video, audio, design assets, brand media, creative writing, or content production.",
-      "keywords": ["image", "video", "audio", "creative", "asset", "brand media", "copy", "content production", "generative"],
+      "keywords": [
+        "image",
+        "video",
+        "audio",
+        "creative",
+        "asset",
+        "brand media",
+        "copy",
+        "content production",
+        "generative"
+      ],
       "exampleRequests": [
         "Create a brand image generation skill.",
         "Design a video storyboard skill.",
@@ -494,7 +949,14 @@
         "Critique a product UX flow.",
         "Draft a technical PRD."
       ],
-      "adjacentCategories": ["marketing-growth", "design-ux-work"]
+      "adjacentCategories": [
+        "marketing-growth",
+        "design-ux-work"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a brand image generation skill.",
+        "/skill-master Critique a product UX flow."
+      ]
     },
     {
       "category": "science-domain",
@@ -502,7 +964,17 @@
       "advisorSkill": "advise-science-domain-skills",
       "advisorPath": "skills/advise-science-domain-skills/SKILL.md",
       "routeWhen": "The target skill supports expert-domain workflows where sources, standards, scope, and validation matter, including scientific, legal, medical, education, engineering, and specialized finance work.",
-      "keywords": ["science", "domain expert", "medical", "legal", "education", "engineering", "standards", "calculation", "expert review"],
+      "keywords": [
+        "science",
+        "domain expert",
+        "medical",
+        "legal",
+        "education",
+        "engineering",
+        "standards",
+        "calculation",
+        "expert review"
+      ],
       "exampleRequests": [
         "Create a literature methods reviewer skill.",
         "Design an engineering calculation checker skill.",
@@ -512,7 +984,15 @@
         "General business sales workflow.",
         "Normal code refactor skill."
       ],
-      "adjacentCategories": ["research-rag", "security-compliance", "legal-work"]
+      "adjacentCategories": [
+        "research-rag",
+        "security-compliance",
+        "legal-work"
+      ],
+      "forwardTestPrompts": [
+        "/skill-master Create a literature methods reviewer skill.",
+        "/skill-master General business sales workflow."
+      ]
     }
   ]
 }

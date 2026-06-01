@@ -2,6 +2,16 @@
 
 All notable changes to Skill Master will be documented in this file.
 
+## Unreleased
+
+- Added `skill-master create <name>` to scaffold target skills from routed advisor blueprints.
+- Added optional `--with-openai` generation for `agents/openai.yaml`.
+- Added optional `--codex-native` mode with the Skill Creator six-step process reference.
+- Added advisor-specific scaffold templates under `templates/`.
+- Added forward-test prompts for every advisor routing category.
+- Tightened validation for YAML frontmatter, skill folder names, frontmatter/name alignment, and description quality.
+- Enforced `/skill-master` as the only installed and supported slash command.
+
 ## 0.1.0 - 2026-06-01
 
 - Added npm packaging with the `skill-master` CLI.

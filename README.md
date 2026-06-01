@@ -10,6 +10,8 @@ Instead of asking humans to remember many skill names, Skill Master gives them o
 
 The agent then reads the routing catalog, chooses the right advisor skill, and produces a concrete blueprint for the target `SKILL.md`.
 
+Only one slash command is installed and supported: `/skill-master`. All category routing happens behind that command.
+
 ## Why This Helps
 
 - One command, many expert advisors.
@@ -45,6 +47,14 @@ List routed categories:
 npx skill-master list
 ```
 
+Scaffold a target skill from a routed blueprint:
+
+```bash
+npx skill-master create sales-call-prep --category sales-revenue --with-openai --codex-native
+```
+
+`create` writes `skills/<name>/SKILL.md`, `references/blueprint.md`, and forward-test prompts. `--with-openai` adds optional `agents/openai.yaml` metadata. `--codex-native` adds the Skill Creator six-step process as a local reference.
+
 ## Use With AI Agents
 
 After installation, ask your agent to use:
@@ -63,6 +73,8 @@ Contributions are welcome. Good improvements include:
 
 - New advisor categories.
 - More realistic routing examples.
+- Better advisor-specific templates in `templates/`.
+- Stronger forward-test prompts for each category.
 - Better failure modes and validation prompts.
 - Cross-runtime compatibility notes.
 - Tests for routing and package installation.

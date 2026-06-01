@@ -14,12 +14,13 @@
     "LICENSE",
     "README.md",
     "bin/",
-    "commands/",
+    "commands/skill-master.md",
     "docs/",
     "scripts/",
     "skill-index.json",
     "skills/",
-    "src/"
+    "src/",
+    "templates/"
   ],
   "scripts": {
     "test": "node bin/skill-master.js doctor .",

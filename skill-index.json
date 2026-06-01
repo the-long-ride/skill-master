@@ -15,6 +15,11 @@
     "path": "src/routing/skill-master-routing.json",
     "examplesPath": "skills/skill-category-router/references/routing-examples.md"
   },
+  "templates": {
+    "advisorBlueprints": "templates/advisors/advisor-blueprints.json",
+    "targetSkill": "templates/target-skill/SKILL.md",
+    "openAiMetadata": "templates/agents/openai.yaml"
+  },
   "verification": {
     "autoCommand": "npx skill-master verify .",
     "fallbackCommand": "npx skill-master doctor .",

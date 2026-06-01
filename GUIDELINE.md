@@ -34,9 +34,24 @@ List route categories:
 npx skill-master list
 ```
 
+Create a target skill scaffold:
+
+```bash
+npx skill-master create sales-call-prep --category sales-revenue --prompt "skill for sales reps preparing renewal calls"
+```
+
+Useful create options:
+
+- `--with-openai` adds optional `agents/openai.yaml` metadata for Codex/OpenAI-style UI discovery.
+- `--codex-native` adds the Skill Creator six-step process reference.
+- `--output <path>` writes under a custom skill root.
+- `--dry-run` previews files before writing.
+
 ## Use With Local AI Agents
 
 Use this when your agent can read local files, such as Codex, Claude Code, Copilot-style agents, or other coding assistants.
+
+Skill Master exposes only one slash command: `/skill-master`. Do not add one command per category; the router loads category advisors internally.
 
 1. Run `npx skill-master init` in the target repository.
 2. Ask the agent with natural language:
@@ -49,6 +64,7 @@ Use this when your agent can read local files, such as Codex, Claude Code, Copil
 4. The command should route through `src/routing/skill-master-routing.json`.
 5. The agent should load the selected advisor from `skills/`.
 6. The final answer should include a target skill blueprint with trigger examples, workflow, resources, failure modes, validation prompts, and output format.
+7. If you want files created locally, run `npx skill-master create <name> --category <primaryCategory> --prompt "<request>"`.
 
 If the runtime does not support slash commands, ask:
 
@@ -136,6 +152,8 @@ AI agents should use this rule when recommending verification:
 2. On Windows, run `pwsh scripts/verify-skills.ps1`.
 3. On Linux or macOS, run `sh scripts/verify-skills.sh`.
 4. If the OS-specific script is unavailable, run `npx skill-master doctor .`.
+
+The verifier now checks stricter skill quality rules: YAML frontmatter must contain only `name` and `description`, skill folder names must be lowercase hyphen-case, frontmatter `name` must match the folder, descriptions must start with `Use when`, and each skill must include `Workflow`, `Failure Modes`, and `Output Format`.
 
 ## Publishing
 

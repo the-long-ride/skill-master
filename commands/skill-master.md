@@ -5,7 +5,7 @@ argument-hint: "<describe the skill you want to build, review, or improve>"
 
 # /skill-master
 
-Use this command as the only human-facing entry point for Skill Master.
+Use this command as the only human-facing entry point for Skill Master. Do not expose category-specific slash commands; route every category through `/skill-master`.
 
 The human may write natural language after the command:
 
@@ -13,6 +13,12 @@ The human may write natural language after the command:
 /skill-master I want a skill that helps sales reps prepare for renewal calls
 /skill-master review this proposed skill for PDF contract extraction
 /skill-master help me design an internal wiki search skill for company policies
+```
+
+For local scaffolding, use the npm CLI after routing is clear:
+
+```bash
+npx skill-master create sales-call-prep --category sales-revenue --with-openai --codex-native
 ```
 
 ## Route First
@@ -24,6 +30,7 @@ The human may write natural language after the command:
 5. Choose up to two `adjacentCategories` only when they affect safety, sources, validation, or deliverables.
 6. Load the `advisorPath` for the primary category.
 7. Follow that advisor's workflow to produce the skill-design consultation.
+8. If the human asks to create files locally, use `skill-master create <name>` with the selected `primaryCategory`.
 
 ## Routing Rules
 
@@ -44,6 +51,21 @@ When the human asks to verify Skill Master or a target skill, detect the current
 - Any OS with Node.js: `node scripts/verify-skills.js` is a portable fallback.
 
 If using the npm CLI, prefer `npx skill-master verify .`; it detects the OS and runs the matching script.
+
+## Local Scaffold Command
+
+Use `skill-master create <name>` only after selecting a category. It scaffolds a target skill from the routed blueprint:
+
+```bash
+npx skill-master create <hyphen-case-name> --category <primaryCategory> --prompt "<human request>"
+```
+
+Options:
+
+- `--with-openai` adds `agents/openai.yaml` metadata for Codex/OpenAI-style UI discovery.
+- `--codex-native` adds `references/codex-native-process.md` with the Skill Creator six-step process.
+- `--output <path>` writes under a custom skill root instead of `skills/`.
+- `--dry-run` previews the files.
 
 ## What To Produce
 
@@ -80,6 +102,8 @@ Target Skill Blueprint
 - Validation prompts:
   1. <prompt>
   2. <prompt>
+- Scaffold command:
+  npx skill-master create <name> --category <category> --prompt "<request>"
 - Output format for the target skill:
   <format>
 ```
