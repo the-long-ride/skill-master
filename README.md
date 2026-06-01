@@ -26,31 +26,31 @@ Only one slash command is installed and supported: `/skill-master`. All category
 Install Skill Master into a project:
 
 ```bash
-npx skill-master init
+npx @the-long-ride/skill-master init
 ```
 
 Validate the install:
 
 ```bash
-npx skill-master doctor .
+npx @the-long-ride/skill-master doctor .
 ```
 
 Run OS-aware script verification:
 
 ```bash
-npx skill-master verify .
+npx @the-long-ride/skill-master verify .
 ```
 
 List routed categories:
 
 ```bash
-npx skill-master list
+npx @the-long-ride/skill-master list
 ```
 
 Scaffold a target skill from a routed blueprint:
 
 ```bash
-npx skill-master create sales-call-prep --category sales-revenue --with-openai --codex-native
+npx @the-long-ride/skill-master create sales-call-prep --category sales-revenue --with-openai --codex-native
 ```
 
 `create` writes `skills/<name>/SKILL.md`, `references/blueprint.md`, and forward-test prompts. `--with-openai` adds optional `agents/openai.yaml` metadata. `--codex-native` adds the Skill Creator six-step process as a local reference.

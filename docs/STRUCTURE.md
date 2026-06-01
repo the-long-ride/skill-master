@@ -14,7 +14,7 @@ This repository uses a root source layout: editable sources live at the reposito
 | `docs/` | Human-facing docs and web-chat prompt packs. |
 | `skill-index.json` | Machine-readable index of commands, routing, and skills. |
 | `package.json` | npm package metadata and CLI entry definition. |
-| `bin/` | Node CLI used by `npx skill-master`. |
+| `bin/` | Node CLI used by `npx @the-long-ride/skill-master`. |
 | `generated-reports/` | Verifier output. Generated, not source. |
 
 ## Routing Flow
@@ -30,7 +30,7 @@ This repository uses a root source layout: editable sources live at the reposito
 ## Scaffold Flow
 
 1. Human or agent selects a primary category through `/skill-master`.
-2. Run `npx skill-master create <name> --category <category>`.
+2. Run `npx @the-long-ride/skill-master create <name> --category <category>`.
 3. The CLI reads `src/routing/skill-master-routing.json`.
 4. The CLI loads `templates/advisors/advisor-blueprints.json`.
 5. The CLI writes a target skill folder with `SKILL.md`, `references/blueprint.md`, and `references/forward-test-prompts.md`.
@@ -42,7 +42,7 @@ This repository uses a root source layout: editable sources live at the reposito
 Run:
 
 ```bash
-npx skill-master verify .
+npx @the-long-ride/skill-master verify .
 ```
 
 Or run the script for the current OS:

@@ -1,6 +1,5 @@
 {
-  "name": "skill-master",
-  "scope": "@the-long-ride",
+  "name": "@the-long-ride/skill-master",
   "version": "1.0.0",
   "description": "A routed skill-design catalog for AI agents, installed with one /skill-master entry point.",
   "keywords": [
