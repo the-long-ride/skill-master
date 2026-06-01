@@ -1,11 +1,34 @@
 {
   "name": "skill-master",
-  "version": "0.1.0",
+  "scope": "@the-long-ride",
+  "version": "1.0.0",
   "description": "A routed skill-design catalog for AI agents, installed with one /skill-master entry point.",
+  "keywords": [
+    "agent-skill",
+    "ai-agent",
+    "agent-skills",
+    "codex",
+    "claude",
+    "slash-command",
+    "skill-master"
+  ],
+  "homepage": "https://github.com/the-long-ride/skill-master#readme",
+  "bugs": {
+    "url": "https://github.com/the-long-ride/skill-master/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-long-ride/skill-master.git"
+  },
   "license": "MIT",
   "author": "the-long-ride",
+  "type": "commonjs",
+  "main": "index.js",
   "bin": {
     "skill-master": "bin/skill-master.js"
+  },
+  "directories": {
+    "doc": "docs"
   },
   "files": [
     "AGENTS.md",
@@ -29,15 +52,6 @@
     "verify:posix": "sh scripts/verify-skills.sh",
     "pack:dry": "npm pack --dry-run"
   },
-  "keywords": [
-    "agent-skill",
-    "ai-agent",
-    "agent-skills",
-    "codex",
-    "claude",
-    "slash-command",
-    "skill-master"
-  ],
   "engines": {
     "node": ">=18"
   },
