@@ -175,12 +175,22 @@
     "marketing-growth": {
       "workflowFocus": [
         "Define the marketing workflow: campaign, content brief, SEO, lifecycle email, positioning, launch messaging, or reporting.",
-        "Require audience, channel, brand voice, claims evidence, approval gates, and performance measures."
+        "Require audience, channel, brand voice, claims evidence, approval gates, and performance measures.",
+        "For public social listening, separate source collection from synthesis, copy, scheduling, and publishing."
       ],
-      "recommendedReferences": ["brand voice guide", "campaign brief", "SEO checklist"],
-      "recommendedScripts": ["content QA checker", "keyword gap helper"],
-      "niceToHave": ["competitor positioning matrix", "lifecycle map"],
-      "outputFormat": "Return audience, message, channel plan, draft or brief, proof points, and success metrics."
+      "recommendedReferences": [
+        "brand voice guide",
+        "campaign brief",
+        "SEO checklist",
+        "public social evidence source map"
+      ],
+      "recommendedScripts": ["content QA checker", "keyword gap helper", "source freshness checker"],
+      "niceToHave": [
+        "competitor positioning matrix",
+        "lifecycle map",
+        "TweetClaw or approved X/Twitter source packet example"
+      ],
+      "outputFormat": "Return audience, message, channel plan, draft or brief, source evidence, proof points, approval boundary, and success metrics."
     },
     "finance-accounting": {
       "workflowFocus": [

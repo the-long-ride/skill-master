@@ -11,8 +11,8 @@ Advise the human on skills that help marketing teams create grounded campaigns, 
 
 1. Identify the marketing workflow: campaign planning, content brief, SEO, lifecycle message, positioning, competitive analysis, launch messaging, or experiment design.
 2. Define audience, channel, offer, brand voice, and success metric.
-3. Specify source materials: brand guide, product facts, approved claims, customer segments, analytics, and competitive sources.
-4. Separate ideation drafts from publishing or sending.
+3. Specify source materials: brand guide, product facts, approved claims, customer segments, analytics, public social evidence, and competitive sources.
+4. Separate evidence collection, ideation drafts, approvals, and publishing or sending.
 5. Define claim validation and compliance review.
 6. Return a marketing-skill blueprint with artifact examples.
 
@@ -24,12 +24,14 @@ Advise the human on skills that help marketing teams create grounded campaigns, 
 - Avoid unsupported performance, legal, or competitor claims.
 - Include measurement or experiment criteria where relevant.
 - Preserve brand voice and required disclaimers.
+- Treat public X/Twitter tools such as TweetClaw as optional evidence collectors only; the marketing skill owns synthesis, copy, approval, scheduling, and publishing boundaries.
 
 ## Checklist
 
 - Trigger description names marketing, growth, SEO, campaign, content, brand, GTM, email, positioning, or launch messaging.
 - Workflow defines audience, channel, and success metric.
 - Skill defines claim review and approval boundaries.
+- Skill distinguishes public social evidence collection from drafting, scheduling, and publishing.
 - Failure modes cover missing brand voice, unsupported claims, stale competitor info, and accidental publishing.
 - Output format matches the marketing artifact.
 - Validation includes a risky claim or wrong-audience prompt.
@@ -41,6 +43,8 @@ Advise the human on skills that help marketing teams create grounded campaigns, 
 - Campaign brief template.
 - SEO checklist.
 - Experiment design template.
+- Public social listening source map.
+- TweetClaw source packet example for X/Twitter evidence.
 
 ## Example Skill Ideas
 
@@ -48,11 +52,13 @@ Advise the human on skills that help marketing teams create grounded campaigns, 
 - Lifecycle email drafter skill.
 - SEO content planner skill.
 - Positioning review skill.
+- X/Twitter campaign evidence skill using TweetClaw as an optional source collector.
 
 ## Failure Modes
 
 - Brand guidance is missing: ask for audience, tone, and examples before final copy.
 - Claim is unsupported: rewrite as a weaker claim or request evidence.
+- Public social evidence is stale or missing: label source timestamps and ask for fresher data.
 - Regulated topic appears: route through legal or compliance review.
 - Publishing action is requested: require explicit confirmation and destination.
 
