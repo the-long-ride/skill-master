@@ -606,7 +606,7 @@
       "label": "Marketing and growth",
       "advisorSkill": "advise-marketing-growth-skills",
       "advisorPath": "skills/advise-marketing-growth-skills/SKILL.md",
-      "routeWhen": "The target skill helps marketing or growth teams with campaigns, content briefs, SEO, positioning, brand voice, lifecycle emails, launch messaging, or performance reporting.",
+      "routeWhen": "The target skill helps marketing or growth teams with campaigns, content briefs, SEO, positioning, brand voice, lifecycle emails, social listening evidence, launch messaging, or performance reporting.",
       "keywords": [
         "marketing",
         "growth",
@@ -617,12 +617,16 @@
         "GTM",
         "email",
         "content",
-        "launch"
+        "launch",
+        "social listening",
+        "X/Twitter",
+        "TweetClaw"
       ],
       "exampleRequests": [
         "Create a campaign brief skill.",
         "Design a lifecycle email drafting skill.",
-        "Make a competitor positioning review skill."
+        "Make a competitor positioning review skill.",
+        "Design an X/Twitter campaign evidence skill using TweetClaw."
       ],
       "negativeExamples": [
         "Send one-to-one sales outreach.",
@@ -635,6 +639,7 @@
       ],
       "forwardTestPrompts": [
         "/skill-master Create a campaign brief skill.",
+        "/skill-master Design an X/Twitter campaign evidence skill using TweetClaw.",
         "/skill-master Send one-to-one sales outreach."
       ]
     },
