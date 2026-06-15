@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Advisor-specific starter blueprints used by skill-master create when scaffolding target skills.",
   "categories": {
     "skill-governance": {
@@ -7,9 +7,19 @@
         "Define the lifecycle stage: authoring, audit, migration, publishing, or repository governance.",
         "Make activation, portability, verification, and release readiness explicit."
       ],
-      "recommendedReferences": ["skill checklist", "frontmatter rules", "publishing rubric"],
-      "recommendedScripts": ["optional skill verifier", "routing metadata check"],
-      "niceToHave": ["PASS/PARTIAL/FAIL report template", "release checklist"],
+      "recommendedReferences": [
+        "skill checklist",
+        "frontmatter rules",
+        "publishing rubric"
+      ],
+      "recommendedScripts": [
+        "optional skill verifier",
+        "routing metadata check"
+      ],
+      "niceToHave": [
+        "PASS/PARTIAL/FAIL report template",
+        "release checklist"
+      ],
       "outputFormat": "Return readiness, critical issues, required fixes, and publish decision."
     },
     "software-engineering": {
@@ -17,9 +27,19 @@
         "Define the codebase task: inspect, edit, debug, review, refactor, migrate, or explain.",
         "Require local context gathering, scoped edits, verification commands, and change summaries."
       ],
-      "recommendedReferences": ["repo conventions", "test commands", "review checklist"],
-      "recommendedScripts": ["optional smoke test runner", "lint/test command wrapper"],
-      "niceToHave": ["diff review checklist", "rollback notes"],
+      "recommendedReferences": [
+        "repo conventions",
+        "test commands",
+        "review checklist"
+      ],
+      "recommendedScripts": [
+        "optional smoke test runner",
+        "lint/test command wrapper"
+      ],
+      "niceToHave": [
+        "diff review checklist",
+        "rollback notes"
+      ],
       "outputFormat": "Return files changed, verification run, behavior impact, and remaining risks."
     },
     "frontend-design": {
@@ -27,9 +47,18 @@
         "Define the UI task: component build, responsive repair, design-system application, or visual polish.",
         "Include viewport checks, accessibility expectations, visual hierarchy, and interaction states."
       ],
-      "recommendedReferences": ["design-system rules", "viewport matrix", "accessibility checklist"],
-      "recommendedScripts": ["optional screenshot or Playwright check"],
-      "niceToHave": ["component state inventory", "visual QA prompts"],
+      "recommendedReferences": [
+        "design-system rules",
+        "viewport matrix",
+        "accessibility checklist"
+      ],
+      "recommendedScripts": [
+        "optional screenshot or Playwright check"
+      ],
+      "niceToHave": [
+        "component state inventory",
+        "visual QA prompts"
+      ],
       "outputFormat": "Return UI changes, responsive states checked, accessibility notes, and screenshots or verification evidence."
     },
     "testing-qa": {
@@ -37,9 +66,19 @@
         "Define the quality gate: regression, accessibility, performance, visual, CI triage, or coverage.",
         "Separate test authoring, test execution, failure triage, and evidence reporting."
       ],
-      "recommendedReferences": ["test strategy", "known flaky tests", "browser/device matrix"],
-      "recommendedScripts": ["test runner wrapper", "report collector"],
-      "niceToHave": ["flake classification rubric", "baseline update policy"],
+      "recommendedReferences": [
+        "test strategy",
+        "known flaky tests",
+        "browser/device matrix"
+      ],
+      "recommendedScripts": [
+        "test runner wrapper",
+        "report collector"
+      ],
+      "niceToHave": [
+        "flake classification rubric",
+        "baseline update policy"
+      ],
       "outputFormat": "Return tests run, failures reproduced, fixes or triage, and confidence level."
     },
     "documents-office": {
@@ -47,9 +86,19 @@
         "Define the document operation: extract, convert, edit, validate, generate, or preserve formatting.",
         "Require format-preserving handling, source traceability, and manual review points for sensitive content."
       ],
-      "recommendedReferences": ["document schema", "formatting rules", "sample source files"],
-      "recommendedScripts": ["optional document parser", "format comparison check"],
-      "niceToHave": ["redaction checklist", "sample output templates"],
+      "recommendedReferences": [
+        "document schema",
+        "formatting rules",
+        "sample source files"
+      ],
+      "recommendedScripts": [
+        "optional document parser",
+        "format comparison check"
+      ],
+      "niceToHave": [
+        "redaction checklist",
+        "sample output templates"
+      ],
       "outputFormat": "Return document changes, extracted fields, confidence notes, and formatting risks."
     },
     "data-analytics": {
@@ -57,9 +106,19 @@
         "Define the analytical artifact: query, cleaning pass, dashboard check, metric answer, or notebook.",
         "Require reproducible steps, source tables, assumptions, validation checks, and uncertainty handling."
       ],
-      "recommendedReferences": ["metric definitions", "schema map", "data quality checklist"],
-      "recommendedScripts": ["SQL or notebook runner", "profile report generator"],
-      "niceToHave": ["chart style rules", "data lineage notes"],
+      "recommendedReferences": [
+        "metric definitions",
+        "schema map",
+        "data quality checklist"
+      ],
+      "recommendedScripts": [
+        "SQL or notebook runner",
+        "profile report generator"
+      ],
+      "niceToHave": [
+        "chart style rules",
+        "data lineage notes"
+      ],
       "outputFormat": "Return question, data used, method, result, checks, caveats, and next questions."
     },
     "research-rag": {
@@ -67,9 +126,19 @@
         "Define the evidence task: web research, literature review, RAG answer, source verification, or synthesis.",
         "Require source quality checks, citations, date awareness, uncertainty, and claim-to-source mapping."
       ],
-      "recommendedReferences": ["source ranking rubric", "citation format", "claim checklist"],
-      "recommendedScripts": ["optional source collector", "citation checker"],
-      "niceToHave": ["exclusion criteria", "freshness policy"],
+      "recommendedReferences": [
+        "source ranking rubric",
+        "citation format",
+        "claim checklist"
+      ],
+      "recommendedScripts": [
+        "optional source collector",
+        "citation checker"
+      ],
+      "niceToHave": [
+        "exclusion criteria",
+        "freshness policy"
+      ],
       "outputFormat": "Return findings, cited evidence, uncertainty, conflicts, and recommended follow-up."
     },
     "memory-personalization": {
@@ -77,9 +146,19 @@
         "Define the memory operation: store, recall, update, scope, audit, or forget durable context.",
         "Require consent, scope boundaries, freshness checks, and clear separation between fact and preference."
       ],
-      "recommendedReferences": ["memory schema", "retention policy", "forgetting checklist"],
-      "recommendedScripts": ["optional memory audit", "dedupe checker"],
-      "niceToHave": ["preference taxonomy", "staleness policy"],
+      "recommendedReferences": [
+        "memory schema",
+        "retention policy",
+        "forgetting checklist"
+      ],
+      "recommendedScripts": [
+        "optional memory audit",
+        "dedupe checker"
+      ],
+      "niceToHave": [
+        "preference taxonomy",
+        "staleness policy"
+      ],
       "outputFormat": "Return proposed memory changes, source evidence, scope, expiration, and user confirmation needs."
     },
     "tool-integration": {
@@ -87,9 +166,19 @@
         "Define the integration contract: API, MCP server, SaaS connector, schema, auth, or webhook workflow.",
         "Require capability discovery, dry-run behavior, permission checks, retries, and structured tool outputs."
       ],
-      "recommendedReferences": ["API schema", "auth rules", "error code map"],
-      "recommendedScripts": ["tool smoke test", "schema validator"],
-      "niceToHave": ["mock responses", "rate-limit policy"],
+      "recommendedReferences": [
+        "API schema",
+        "auth rules",
+        "error code map"
+      ],
+      "recommendedScripts": [
+        "tool smoke test",
+        "schema validator"
+      ],
+      "niceToHave": [
+        "mock responses",
+        "rate-limit policy"
+      ],
       "outputFormat": "Return tools used, inputs, dry-run or write status, results, errors, and rollback notes."
     },
     "browser-automation": {
@@ -97,9 +186,19 @@
         "Define the browser task: navigation, scraping, form fill, screenshot, download, or page-state inspection.",
         "Require selectors, login boundaries, consent, anti-abuse checks, and screenshot or DOM evidence."
       ],
-      "recommendedReferences": ["site map", "selector notes", "terms and permission constraints"],
-      "recommendedScripts": ["Playwright task runner", "screenshot collector"],
-      "niceToHave": ["selector fallback list", "captcha/manual handoff policy"],
+      "recommendedReferences": [
+        "site map",
+        "selector notes",
+        "terms and permission constraints"
+      ],
+      "recommendedScripts": [
+        "Playwright task runner",
+        "screenshot collector"
+      ],
+      "niceToHave": [
+        "selector fallback list",
+        "captcha/manual handoff policy"
+      ],
       "outputFormat": "Return pages visited, actions taken, captured data, screenshots, and blocked steps."
     },
     "agent-orchestration": {
@@ -107,9 +206,19 @@
         "Define the control pattern: routing, planning, multi-agent handoff, evaluation, parallel work, or supervision.",
         "Require explicit roles, handoff contracts, stop conditions, and final synthesis responsibility."
       ],
-      "recommendedReferences": ["agent role map", "handoff schema", "evaluation rubric"],
-      "recommendedScripts": ["optional evaluator runner", "task graph validator"],
-      "niceToHave": ["conflict resolution policy", "parallelization checklist"],
+      "recommendedReferences": [
+        "agent role map",
+        "handoff schema",
+        "evaluation rubric"
+      ],
+      "recommendedScripts": [
+        "optional evaluator runner",
+        "task graph validator"
+      ],
+      "niceToHave": [
+        "conflict resolution policy",
+        "parallelization checklist"
+      ],
       "outputFormat": "Return selected agents, task graph, handoffs, evaluator criteria, and final decision."
     },
     "devops-cloud": {
@@ -117,9 +226,19 @@
         "Define the operations task: CI/CD, deployment, infrastructure, cloud resource, monitoring, incident, or release.",
         "Require environment detection, dry-run or plan review, blast-radius analysis, and rollback guidance."
       ],
-      "recommendedReferences": ["runbook", "environment map", "rollback checklist"],
-      "recommendedScripts": ["plan or diff command", "health check command"],
-      "niceToHave": ["change window policy", "incident severity rubric"],
+      "recommendedReferences": [
+        "runbook",
+        "environment map",
+        "rollback checklist"
+      ],
+      "recommendedScripts": [
+        "plan or diff command",
+        "health check command"
+      ],
+      "niceToHave": [
+        "change window policy",
+        "incident severity rubric"
+      ],
       "outputFormat": "Return environment, proposed change, verification, risk, rollback, and approval status."
     },
     "security-compliance": {
@@ -127,9 +246,19 @@
         "Define the risk task: security review, threat model, privacy check, compliance evidence, secrets, or abuse review.",
         "Require asset boundaries, severity, evidence, policy mapping, and safe handling of sensitive data."
       ],
-      "recommendedReferences": ["security policy", "severity rubric", "control mapping"],
-      "recommendedScripts": ["secret scanner", "policy check runner"],
-      "niceToHave": ["threat model template", "exception workflow"],
+      "recommendedReferences": [
+        "security policy",
+        "severity rubric",
+        "control mapping"
+      ],
+      "recommendedScripts": [
+        "secret scanner",
+        "policy check runner"
+      ],
+      "niceToHave": [
+        "threat model template",
+        "exception workflow"
+      ],
       "outputFormat": "Return finding, severity, evidence, affected scope, recommendation, and verification path."
     },
     "business-operations": {
@@ -137,9 +266,19 @@
         "Define the cross-functional workflow: planning, approvals, operating rhythm, stakeholder coordination, or process automation.",
         "Require owner, decision cadence, dependencies, artifacts, and escalation rules."
       ],
-      "recommendedReferences": ["operating cadence", "approval matrix", "stakeholder map"],
-      "recommendedScripts": ["optional status pack generator", "dependency tracker"],
-      "niceToHave": ["RACI template", "decision log"],
+      "recommendedReferences": [
+        "operating cadence",
+        "approval matrix",
+        "stakeholder map"
+      ],
+      "recommendedScripts": [
+        "optional status pack generator",
+        "dependency tracker"
+      ],
+      "niceToHave": [
+        "RACI template",
+        "decision log"
+      ],
       "outputFormat": "Return objective, owners, timeline, dependencies, risks, decisions, and next actions."
     },
     "sales-revenue": {
@@ -147,9 +286,19 @@
         "Define the revenue workflow: account research, call prep, outreach, CRM hygiene, pipeline review, forecast, or renewal.",
         "Require source-of-truth systems, draft-only customer communication, territory rules, and CRM confidence."
       ],
-      "recommendedReferences": ["CRM field map", "approved messaging", "qualification framework"],
-      "recommendedScripts": ["optional CRM data checker", "account brief formatter"],
-      "niceToHave": ["battlecards", "objection handling references"],
+      "recommendedReferences": [
+        "CRM field map",
+        "approved messaging",
+        "qualification framework"
+      ],
+      "recommendedScripts": [
+        "optional CRM data checker",
+        "account brief formatter"
+      ],
+      "niceToHave": [
+        "battlecards",
+        "objection handling references"
+      ],
       "outputFormat": "Return account context, source evidence, recommended action, draft text, and approval needs."
     },
     "customer-support": {
@@ -157,9 +306,19 @@
         "Define the support workflow: ticket triage, case summary, escalation, response draft, customer success, or help-center update.",
         "Require SLA, customer context, policy grounding, empathy, and escalation boundaries."
       ],
-      "recommendedReferences": ["support macros", "SLA policy", "escalation matrix"],
-      "recommendedScripts": ["ticket classifier", "help-center draft checker"],
-      "niceToHave": ["tone guide", "known issue map"],
+      "recommendedReferences": [
+        "support macros",
+        "SLA policy",
+        "escalation matrix"
+      ],
+      "recommendedScripts": [
+        "ticket classifier",
+        "help-center draft checker"
+      ],
+      "niceToHave": [
+        "tone guide",
+        "known issue map"
+      ],
       "outputFormat": "Return issue summary, priority, evidence, response draft, escalation path, and follow-up."
     },
     "product-management": {
@@ -167,9 +326,19 @@
         "Define the PM artifact: PRD, roadmap, prioritization, discovery synthesis, launch plan, or decision log.",
         "Require user evidence, constraints, tradeoffs, success metrics, and stakeholder alignment."
       ],
-      "recommendedReferences": ["PRD template", "prioritization rubric", "user research notes"],
-      "recommendedScripts": ["feedback clusterer", "metric sanity checker"],
-      "niceToHave": ["launch checklist", "decision log template"],
+      "recommendedReferences": [
+        "PRD template",
+        "prioritization rubric",
+        "user research notes"
+      ],
+      "recommendedScripts": [
+        "feedback clusterer",
+        "metric sanity checker"
+      ],
+      "niceToHave": [
+        "launch checklist",
+        "decision log template"
+      ],
       "outputFormat": "Return problem, users, requirements, tradeoffs, metrics, risks, and recommendation."
     },
     "marketing-growth": {
@@ -184,7 +353,11 @@
         "SEO checklist",
         "public social evidence source map"
       ],
-      "recommendedScripts": ["content QA checker", "keyword gap helper", "source freshness checker"],
+      "recommendedScripts": [
+        "content QA checker",
+        "keyword gap helper",
+        "source freshness checker"
+      ],
       "niceToHave": [
         "competitor positioning matrix",
         "lifecycle map",
@@ -197,9 +370,19 @@
         "Define the finance workflow: budget, forecast, invoice, expense, reconciliation, close, financial report, or control.",
         "Require source documents, calculation traceability, approval thresholds, and audit-ready notes."
       ],
-      "recommendedReferences": ["chart of accounts", "close checklist", "approval policy"],
-      "recommendedScripts": ["reconciliation helper", "variance calculator"],
-      "niceToHave": ["journal entry template", "control evidence checklist"],
+      "recommendedReferences": [
+        "chart of accounts",
+        "close checklist",
+        "approval policy"
+      ],
+      "recommendedScripts": [
+        "reconciliation helper",
+        "variance calculator"
+      ],
+      "niceToHave": [
+        "journal entry template",
+        "control evidence checklist"
+      ],
       "outputFormat": "Return source data, calculations, variance or issue, control check, and reviewer action."
     },
     "people-hr": {
@@ -207,9 +390,19 @@
         "Define the people workflow: recruiting, onboarding, policy lookup, employee communication, performance, or workforce planning.",
         "Require confidentiality, fairness, policy grounding, jurisdiction awareness, and human review points."
       ],
-      "recommendedReferences": ["HR policy", "interview rubric", "onboarding checklist"],
-      "recommendedScripts": ["candidate packet formatter", "policy answer checker"],
-      "niceToHave": ["inclusive language guide", "handoff template"],
+      "recommendedReferences": [
+        "HR policy",
+        "interview rubric",
+        "onboarding checklist"
+      ],
+      "recommendedScripts": [
+        "candidate packet formatter",
+        "policy answer checker"
+      ],
+      "niceToHave": [
+        "inclusive language guide",
+        "handoff template"
+      ],
       "outputFormat": "Return request type, policy or evidence, draft/action, risks, and required human review."
     },
     "legal-work": {
@@ -217,9 +410,19 @@
         "Define the legal-support workflow: contract intake, clause extraction, playbook comparison, matter summary, or compliance evidence.",
         "Require non-lawyer boundaries, source quotes, jurisdiction or playbook scope, and escalation triggers."
       ],
-      "recommendedReferences": ["contract playbook", "clause taxonomy", "matter intake checklist"],
-      "recommendedScripts": ["clause extractor", "redline summary helper"],
-      "niceToHave": ["risk rating rubric", "privilege handling notes"],
+      "recommendedReferences": [
+        "contract playbook",
+        "clause taxonomy",
+        "matter intake checklist"
+      ],
+      "recommendedScripts": [
+        "clause extractor",
+        "redline summary helper"
+      ],
+      "niceToHave": [
+        "risk rating rubric",
+        "privilege handling notes"
+      ],
       "outputFormat": "Return extracted issue, source location, playbook match, risk level, and lawyer review needs."
     },
     "operations-process": {
@@ -227,9 +430,19 @@
         "Define the operating workflow: SOP, vendor coordination, procurement, inventory, scheduling, handoff, or process audit.",
         "Require owner, trigger, inputs, dependencies, exceptions, and measurable completion criteria."
       ],
-      "recommendedReferences": ["SOP template", "vendor contact rules", "process map"],
-      "recommendedScripts": ["checklist generator", "status tracker"],
-      "niceToHave": ["handoff form", "exception log"],
+      "recommendedReferences": [
+        "SOP template",
+        "vendor contact rules",
+        "process map"
+      ],
+      "recommendedScripts": [
+        "checklist generator",
+        "status tracker"
+      ],
+      "niceToHave": [
+        "handoff form",
+        "exception log"
+      ],
       "outputFormat": "Return process stage, owner, required inputs, next action, blockers, and audit trail."
     },
     "productivity-workplace": {
@@ -237,9 +450,19 @@
         "Define the workplace workflow: meeting prep, notes, calendar, email, tasks, weekly review, or executive assistance.",
         "Require participant context, action ownership, deadlines, privacy, and concise handoff output."
       ],
-      "recommendedReferences": ["meeting note format", "task taxonomy", "email tone guide"],
-      "recommendedScripts": ["action item extractor", "calendar brief formatter"],
-      "niceToHave": ["priority rubric", "follow-up template"],
+      "recommendedReferences": [
+        "meeting note format",
+        "task taxonomy",
+        "email tone guide"
+      ],
+      "recommendedScripts": [
+        "action item extractor",
+        "calendar brief formatter"
+      ],
+      "niceToHave": [
+        "priority rubric",
+        "follow-up template"
+      ],
       "outputFormat": "Return summary, decisions, action items, owners, dates, and suggested follow-up."
     },
     "enterprise-search-knowledge": {
@@ -247,9 +470,19 @@
         "Define the internal knowledge task: policy answer, document discovery, expert finding, context synthesis, or cross-tool search.",
         "Require permission boundaries, source ranking, citations, freshness, and conflicting-source handling."
       ],
-      "recommendedReferences": ["source inventory", "permission model", "citation style"],
-      "recommendedScripts": ["search query helper", "source dedupe checker"],
-      "niceToHave": ["expert locator rubric", "freshness policy"],
+      "recommendedReferences": [
+        "source inventory",
+        "permission model",
+        "citation style"
+      ],
+      "recommendedScripts": [
+        "search query helper",
+        "source dedupe checker"
+      ],
+      "niceToHave": [
+        "expert locator rubric",
+        "freshness policy"
+      ],
       "outputFormat": "Return answer, cited internal sources, confidence, gaps, and next places to search."
     },
     "small-business": {
@@ -257,9 +490,19 @@
         "Define the owner-operator workflow: quote, invoice, scheduling, customer message, simple bookkeeping, or local-service automation.",
         "Require lightweight inputs, clear owner approval, customer-ready drafts, and practical next steps."
       ],
-      "recommendedReferences": ["service menu", "pricing rules", "customer message templates"],
-      "recommendedScripts": ["quote calculator", "weekly dashboard helper"],
-      "niceToHave": ["review response examples", "simple bookkeeping checklist"],
+      "recommendedReferences": [
+        "service menu",
+        "pricing rules",
+        "customer message templates"
+      ],
+      "recommendedScripts": [
+        "quote calculator",
+        "weekly dashboard helper"
+      ],
+      "niceToHave": [
+        "review response examples",
+        "simple bookkeeping checklist"
+      ],
       "outputFormat": "Return customer/job context, draft or calculation, assumptions, approval needs, and next action."
     },
     "design-ux-work": {
@@ -267,9 +510,19 @@
         "Define the design work: UX research synthesis, design critique, Figma handoff, UX writing, design QA, or stakeholder communication.",
         "Require user goals, design intent, evidence, accessibility, and actionable critique."
       ],
-      "recommendedReferences": ["design brief", "research synthesis template", "handoff checklist"],
-      "recommendedScripts": ["design QA checklist runner", "copy inventory helper"],
-      "niceToHave": ["critique rubric", "prototype notes"],
+      "recommendedReferences": [
+        "design brief",
+        "research synthesis template",
+        "handoff checklist"
+      ],
+      "recommendedScripts": [
+        "design QA checklist runner",
+        "copy inventory helper"
+      ],
+      "niceToHave": [
+        "critique rubric",
+        "prototype notes"
+      ],
       "outputFormat": "Return design goal, observations, evidence, recommendations, severity, and handoff notes."
     },
     "creative-media": {
@@ -277,9 +530,19 @@
         "Define the creative workflow: image, video, audio, design asset, brand media, creative copy, or content production.",
         "Require brief, audience, style constraints, rights/safety checks, review loop, and asset deliverables."
       ],
-      "recommendedReferences": ["creative brief", "brand guide", "asset specs"],
-      "recommendedScripts": ["asset naming checker", "prompt variant helper"],
-      "niceToHave": ["shot list", "styleboard references"],
+      "recommendedReferences": [
+        "creative brief",
+        "brand guide",
+        "asset specs"
+      ],
+      "recommendedScripts": [
+        "asset naming checker",
+        "prompt variant helper"
+      ],
+      "niceToHave": [
+        "shot list",
+        "styleboard references"
+      ],
       "outputFormat": "Return concept, prompt or draft, asset specs, review notes, and next production step."
     },
     "science-domain": {
@@ -287,9 +550,19 @@
         "Define the expert-domain workflow: scientific review, engineering calculation, education explainer, medical learning support, or standards check.",
         "Require domain boundaries, source standards, validation method, uncertainty, and expert review conditions."
       ],
-      "recommendedReferences": ["domain standards", "calculation rubric", "source quality checklist"],
-      "recommendedScripts": ["calculation checker", "citation validator"],
-      "niceToHave": ["assumption log", "expert escalation criteria"],
+      "recommendedReferences": [
+        "domain standards",
+        "calculation rubric",
+        "source quality checklist"
+      ],
+      "recommendedScripts": [
+        "calculation checker",
+        "citation validator"
+      ],
+      "niceToHave": [
+        "assumption log",
+        "expert escalation criteria"
+      ],
       "outputFormat": "Return question, method, sources, result, assumptions, uncertainty, and review recommendation."
     }
   }

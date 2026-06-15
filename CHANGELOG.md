@@ -2,6 +2,12 @@
 
 All notable changes to Skill Master will be documented in this file.
 
+## 1.0.1 - 2026-06-16
+
+- Improved advisor skills with overview, trigger boundaries, inputs/tools, verification, examples, and human verification sections.
+- Updated creating-skills checklist and template for trigger validation, verification, examples, and advisor/direct-execution boundaries.
+- Updated universal skill governance checklist for verification and portability.
+
 ## Unreleased
 
 - Added `skill-master create <name>` to scaffold target skills from routed advisor blueprints.
