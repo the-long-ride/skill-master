@@ -1,14 +1,29 @@
 ---
 name: advise-agent-orchestration-skills
-description: Use when a human wants to design, evaluate, or improve AI agent skills for planning, routing, multi-agent collaboration, evaluators, handoffs, parallel work, task decomposition, or agent workflow control.
+description: Use when a human wants to design, evaluate, or improve AI agent skills for planning, routing, multi-agent collaboration, evaluators, handoffs, parallel work, task decomposition, or agent workflow control
 ---
 
 # Agent Orchestration Skill Advisor
 
-Advise the human on skills that coordinate agents, tools, or staged reasoning workflows.
+## Overview
+
+Advisor for designing, evaluating, and improving AI agent skills in the agent orchestration domain. Use this skill to turn a vague skill idea into a compact skill blueprint, not to perform the domain work itself.
+
+## When To Use
+
+Use when a human asks to design, review, improve, migrate, publish, or validate an AI agent skill for agent orchestration.
+Use when trigger quality, workflow shape, failure recovery, output format, references, scripts, or validation need improvement.
+Do not use when the human wants the agent to directly perform the agent orchestration task instead of designing the skill.
+
+## Inputs And Tools
+
+- User's skill idea, draft `SKILL.md`, target runtime, example prompts, and any existing references, scripts, or assets.
+- Repository skill files, routing metadata, and validation reports when improving an existing repository.
+- Read-only inspection first; ask before edits, publishing, running commands, or spawning agents.
 
 ## Workflow
 
+- Separate skill-design advice from target-domain execution.
 1. Identify the orchestration pattern: routing, prompt chaining, evaluator, parallelization, supervisor, or handoff.
 2. Define roles, responsibilities, and stop conditions.
 3. Specify what context each step receives and what must not be leaked.
@@ -18,6 +33,8 @@ Advise the human on skills that coordinate agents, tools, or staged reasoning wo
 
 ## Category Standards
 
+- Keep the skill compact enough to trigger reliably and load without flooding context.
+- Prefer reusable reference files and scripts for heavy domain-specific details.
 - Use orchestration only when it reduces risk or complexity.
 - Keep roles narrow and testable.
 - Define handoff inputs and outputs explicitly.
@@ -25,8 +42,17 @@ Advise the human on skills that coordinate agents, tools, or staged reasoning wo
 - Include stop conditions and budget controls.
 - Explain how conflicting agent outputs are resolved.
 
+## Verification
+
+- Run at least two realistic prompts: one that should trigger the skill and one that should not.
+- Check that the skill asks for missing inputs before giving brittle advice.
+- Confirm failure modes include recovery behavior, not only warnings.
+- Confirm validation commands or manual checks are safe for the target runtime.
+
 ## Checklist
 
+- Examples show concrete input and expected output.
+- Verification can be repeated by a human or another agent.
 - Trigger description names routing, multi-agent, planning, handoff, evaluator, or workflow control.
 - Workflow defines each role or stage.
 - Skill defines context boundaries.
@@ -36,6 +62,8 @@ Advise the human on skills that coordinate agents, tools, or staged reasoning wo
 
 ## Nice To Have
 
+- Trigger collision notes for adjacent skills.
+- PASS/PARTIAL/FAIL verification rubric.
 - Role prompt templates.
 - Trace schema.
 - Consensus or voting rule.
@@ -145,12 +173,35 @@ Rule: MCP should make skills discoverable, testable, and reusable. MCP should no
 - Research synthesis evaluator skill.
 - Multi-agent planning skill.
 
+## Examples
+
+Input: "Help me design a skill for agent orchestration workflows that reviews drafts and flags missing evidence."
+Output: A compact skill blueprint with trigger description, ordered workflow, resources, failure recovery, validation prompts, and output format.
+
+Input: "This agent orchestration skill triggers too often and gives generic advice."
+Output: A revision plan that narrows triggers, moves heavy details to references, adds examples, and defines repeatable verification.
+
 ## Failure Modes
 
 - Orchestration is unnecessary: recommend a single-agent workflow.
 - Agents disagree: apply the predefined resolution rule and surface uncertainty.
 - Workflow loops: stop at the configured limit and ask for human direction.
 - Context leakage risk: reduce shared context and pass raw artifacts only.
+
+## Human Verification
+
+Score the revised skill before calling it ready:
+
+```text
+Discovery: PASS | PARTIAL | FAIL
+Content: PASS | PARTIAL | FAIL
+Verification: PASS | PARTIAL | FAIL
+Critical gaps:
+1. <gap>
+Required fixes:
+1. <fix>
+Decision: READY | NEEDS REVISION
+```
 
 ## Output Format
 

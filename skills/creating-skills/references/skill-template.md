@@ -11,13 +11,14 @@ description: Use when ...
 ## Overview
 One short paragraph describing the core principle.
 
-## When to Use
+## When To Use
 - Trigger 1
 - Trigger 2
 - Do not use when ...
 
-## Inputs and Tools
+## Inputs And Tools
 - Exact tools, files, commands, APIs, and constraints
+- Read-only inspection first; ask before edits, publishing, running commands, or spawning agents
 
 ## Workflow
 1. First step
@@ -27,6 +28,11 @@ One short paragraph describing the core principle.
 ## Failure Modes
 - Common mistake and recovery
 - Common mistake and recovery
+
+## Verification
+- One trigger-positive prompt
+- One trigger-negative prompt
+- Manual or scripted check with evidence
 
 ## Output Format
 - What the agent should produce or report
@@ -49,12 +55,14 @@ Output:
 - Move large reference tables into a separate file.
 - Prefer short examples over long explanations.
 - If humans will audit this skill, include a deterministic verification section.
+- For advisor skills, clearly separate skill-design advice from direct domain execution.
 
 ## Example Prompts to Validate Triggering
 
 - "Help me write a new skill for flaky integration tests."
 - "My SKILL.md is too generic and does not trigger reliably."
 - "Review this skill and tell me if it passes a checklist."
+- "Do the task directly instead of designing the skill."
 
 ## Example Completion Report
 

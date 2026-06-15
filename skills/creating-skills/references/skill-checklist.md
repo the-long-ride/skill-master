@@ -9,27 +9,35 @@ Scoring key:
 
 ## Discovery
 
-- Description starts with `Use when...`
-- Description only explains when to use, not how to execute
-- Trigger words match the user intents and symptoms the skill should catch
-- Skill name is short, clear, and searchable
+- Description starts with `Use when`.
+- Description only explains when to use, not how to execute.
+- Trigger words match the user intents and symptoms the skill should catch.
+- Skill name is short, clear, and searchable.
+- Negative triggers prevent direct task execution when the skill is an advisor.
 
 ## Content
 
-- Overview is one short paragraph
-- Workflow is concrete and ordered
-- Tools and constraints are explicit
-- Boundary conditions are present
-- Failure modes are named with recovery guidance
-- Output format is clear
+- Overview is one short paragraph.
+- Workflow is concrete and ordered.
+- Tools and constraints are explicit.
+- Boundary conditions are present.
+- Failure modes are named with recovery guidance.
+- Output format is clear.
+- Examples show concrete input and expected output.
 
 ## Quality
 
-- Examples are short and concrete
-- Supporting files carry heavy reference material
-- The skill is compact enough to load often
-- Success requires evidence when the skill claims completion
-- Irreversible actions have explicit stop conditions
+- Supporting files carry heavy reference material.
+- The skill is compact enough to load often.
+- Success requires evidence when the skill claims completion.
+- Irreversible actions have explicit stop conditions.
+- Validation can be repeated by a human or another agent.
+
+## Portability
+
+- Skill is understandable without one specific runtime.
+- Runtime-specific details are isolated to references.
+- No hidden dependency on unavailable tools.
 
 ## Final Check
 
@@ -59,6 +67,7 @@ Skill: <path>
 Discovery: PASS <n>, PARTIAL <n>, FAIL <n>
 Content: PASS <n>, PARTIAL <n>, FAIL <n>
 Quality: PASS <n>, PARTIAL <n>, FAIL <n>
+Portability: PASS <n>, PARTIAL <n>, FAIL <n>
 Critical FAIL items:
 - <item>
 Required fixes:
