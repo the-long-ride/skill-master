@@ -42,6 +42,102 @@ Advise the human on skills that coordinate agents, tools, or staged reasoning wo
 - Budget and timeout policy.
 - Forward-test protocol.
 
+## MCP Readiness Checklist
+
+Use when a human wants to expose skill orchestration through an MCP server.
+
+### When MCP Is Worth It
+
+- Add MCP only when skills need to be discoverable, searchable, validated, or reused across clients.
+- Use a single skill instead of MCP when the task is one-off, local, or already handled by a slash command.
+- Use MCP when multiple clients need the same skill catalog, routing, audit, or prompt-generation behavior.
+- Avoid MCP if it adds autonomy, shell access, network calls, or writes without a clear need.
+
+### MCP Surface
+
+- Expose skill catalog as MCP resources.
+- Expose reusable prompts as MCP prompts.
+- Expose read-only helpers as MCP tools.
+- Keep write tools out of the first version.
+- Keep MCP as a coordination layer, not a replacement for slash-command skills.
+
+Suggested first tools:
+
+- `list_skills`: returns all available skills.
+- `get_skill`: returns one skill by ID.
+- `search_skills`: finds skills by task, trigger, or category.
+- `validate_skill`: checks required fields and quality rules.
+- `route_task_to_skill`: suggests the best skill for a human request.
+
+Suggested later tools:
+
+- `generate_skill_prompt`: builds prompt from a skill template.
+- `audit_skill_set`: finds missing triggers, checklists, outputs, or failure modes.
+
+### Tool Safety Contract
+
+- Require human approval before MCP can run commands, edit files, publish, invoke agents, or call network services.
+- Restrict reads to repo skill directories.
+- Block path traversal and unsafe skill IDs.
+- Do not expose `.git` internals, env vars, secrets, or audit logs outside the local machine.
+- Do not execute arbitrary commands.
+- Do not spawn external agents without approval.
+- Log tool calls with trace IDs.
+- Keep audit logs local unless the user opts in.
+
+### Metadata Contract
+
+Each MCP-ready skill should include:
+
+```yaml
+id: <skill-id>
+name: <human-readable-name>
+type: slash | mcp | both
+category: <category>
+triggers:
+  - <use-when phrase>
+capabilities:
+  - <what it can do>
+requires_human_approval_for:
+  - <risky actions>
+outputs:
+  - <expected output format>
+validation:
+  - <how to test>
+```
+
+### Implementation Sequence
+
+1. Add read-only catalog and skill lookup.
+2. Add search and routing.
+3. Add validation and audit reports.
+4. Add prompt generation.
+5. Add write tools only after explicit approval and tests.
+6. Add agent invocation only after budget, timeout, and approval controls exist.
+
+### Validation Checklist
+
+- `list_skills` returns every real skill.
+- `get_skill` fails cleanly for missing skill.
+- `search_skills` returns ranked results.
+- `validate_skill` catches missing workflow.
+- `validate_skill` catches missing checklist.
+- `validate_skill` catches missing output format.
+- `route_task_to_skill` handles vague prompts.
+- `audit_skill_set` produces actionable report.
+- MCP prompt output matches documented format.
+- Security tests block path traversal and directory escape.
+
+### Validation Prompts
+
+- "List all skills and confirm none are outside the skill directories."
+- "Route this vague task to a skill, or ask clarifying questions."
+- "Validate this skill and list missing required sections."
+- "Try to read a file outside the allowed skill directories."
+- "Try to publish or edit a skill without approval."
+
+Rule: MCP should make skills discoverable, testable, and reusable. MCP should not make skills unsafe, autonomous, or magical.
+
 ## Example Skill Ideas
 
 - Skill routing advisor.
