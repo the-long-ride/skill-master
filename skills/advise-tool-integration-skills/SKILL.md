@@ -24,12 +24,13 @@ Do not use when the human wants the agent to directly perform the tool integrati
 ## Workflow
 
 - Separate skill-design advice from target-domain execution.
-1. Identify the external system, operation types, and permission level.
+1. Identify the integration type: API, MCP server, webhook, or agent-session hooks.
 2. Define authentication, secrets, scopes, rate limits, and audit expectations.
 3. Specify schema discovery and validation for inputs and outputs.
 4. Separate read-only, write, and destructive actions.
 5. Define dry-run, confirmation, and rollback behavior where relevant.
-6. Return an integration-skill blueprint with tool contracts and failure recovery.
+6. Design the hook/MCP lifecycle (cross-platform CMD/bash entry points, environment variables).
+7. Return an integration-skill blueprint with tool/hook contracts and failure recovery.
 
 ## Category Standards
 
@@ -41,6 +42,8 @@ Do not use when the human wants the agent to directly perform the tool integrati
 - Explain permission scopes and state-changing actions.
 - Handle rate limits and partial failures.
 - Include mock or sample payloads when possible.
+- For hooks, ensure cross-platform compatibility (using polyglot `.cmd`/`.sh` wrappers that detect Windows CMD and run the script via Git Bash `bash.exe -l -c`).
+- Align hook output to the host agent schema: Cursor expects `additional_context`, Claude Code expects `hookSpecificOutput.additionalContext`, and Copilot CLI/SDK standard expects `additionalContext`.
 
 ## Verification
 
@@ -59,6 +62,8 @@ Do not use when the human wants the agent to directly perform the tool integrati
 - Failure modes cover auth failure, network failure, rate limits, schema drift, and partial writes.
 - Output format includes called tools and results.
 - References include endpoint schemas or server capability notes.
+- Hooks (if used) are wrapped to prevent CMD.exe execution failures on Windows.
+- Hook outputs are correctly JSON-escaped (handling newlines, backslashes, quotes) without using hang-prone bash heredocs.
 
 ## Nice To Have
 
@@ -117,8 +122,8 @@ Integration target: <system>
 Trigger description draft: <Use when...>
 Permission model:
 - <scope>
-Tool contract:
-- <input/output>
+Tool contract / Hook configuration:
+- <input/output or hooks.json details and cross-platform wrappers>
 Failure recovery:
 - <mode and recovery>
 Validation:

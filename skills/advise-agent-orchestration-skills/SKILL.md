@@ -70,24 +70,26 @@ Do not use when the human wants the agent to directly perform the agent orchestr
 - Budget and timeout policy.
 - Forward-test protocol.
 
-## MCP Readiness Checklist
+## MCP & Hooks Readiness Checklist
 
-Use when a human wants to expose skill orchestration through an MCP server.
+Use when a human wants to expose skill orchestration through an MCP server or hook into agent lifecycles (like session start, pre-tool use).
 
-### When MCP Is Worth It
+### When MCP or Hooks Are Worth It
 
 - Add MCP only when skills need to be discoverable, searchable, validated, or reused across clients.
 - Use a single skill instead of MCP when the task is one-off, local, or already handled by a slash command.
-- Use MCP when multiple clients need the same skill catalog, routing, audit, or prompt-generation behavior.
-- Avoid MCP if it adds autonomy, shell access, network calls, or writes without a clear need.
+- Use hooks when the agent needs context injected automatically on start (SessionStart) or needs interceptors before using tools (PreToolUse).
+- Avoid hooks if they introduce boot latency, print excessive logs, or make unauthorized external/network calls.
 
-### MCP Surface
+### MCP & Hooks Surface
 
 - Expose skill catalog as MCP resources.
 - Expose reusable prompts as MCP prompts.
 - Expose read-only helpers as MCP tools.
-- Keep write tools out of the first version.
-- Keep MCP as a coordination layer, not a replacement for slash-command skills.
+- Configure hooks using `hooks.json` or equivalent matching the agent runtime spec.
+- Write polyglot wrappers (`run-hook.cmd` on Windows CMD, delegating to `session-start.sh` or similar) so hook commands work cross-platform.
+- Align hook output to the host agent schema: Cursor expects `additional_context` (snake_case), Claude Code expects `hookSpecificOutput.additionalContext` (nested camelCase), and Copilot expects `additionalContext` (camelCase).
+- Escape hook JSON strings correctly (handling newlines, backslashes, quotes) without using hang-prone bash heredocs.
 
 Suggested first tools:
 
@@ -102,16 +104,15 @@ Suggested later tools:
 - `generate_skill_prompt`: builds prompt from a skill template.
 - `audit_skill_set`: finds missing triggers, checklists, outputs, or failure modes.
 
-### Tool Safety Contract
+### Tool & Hook Safety Contract
 
-- Require human approval before MCP can run commands, edit files, publish, invoke agents, or call network services.
+- Require human approval before MCP or hooks can run modifying commands, edit files, publish, invoke agents, or call network services.
 - Restrict reads to repo skill directories.
 - Block path traversal and unsafe skill IDs.
 - Do not expose `.git` internals, env vars, secrets, or audit logs outside the local machine.
-- Do not execute arbitrary commands.
-- Do not spawn external agents without approval.
-- Log tool calls with trace IDs.
-- Keep audit logs local unless the user opts in.
+- Do not execute arbitrary commands or spawn external agents without approval.
+- Log tool/hook calls with trace IDs.
+- Fail safely: hook scripts must catch errors, handle missing variables, and exit cleanly (exit 0) so they do not block agent initialization or crash the terminal.
 
 ### Metadata Contract
 

@@ -86,6 +86,7 @@ Use this structure unless the task clearly needs something different:
 - Move heavy reference material into supporting files.
 - Make stop conditions explicit when the skill controls irreversible or high-risk actions.
 - Use fresh verification when the skill claims success, completion, or correctness.
+- Ensure any agent hooks (`hooks.json`) or Model Context Protocol (MCP) integrations are designed for cross-platform reliability (using polyglot wrappers for Windows CMD/Unix bash compatibility) and output context format compatibility (Cursor, Claude Code, and Copilot CLI schemas).
 
 ## Example Library
 

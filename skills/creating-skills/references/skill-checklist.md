@@ -39,6 +39,19 @@ Scoring key:
 - Runtime-specific details are isolated to references.
 - No hidden dependency on unavailable tools.
 
+## Hooks & MCP Configuration
+
+- Hook configuration (`hooks.json` or equivalent) is defined and cross-platform.
+- Hook scripts use a polyglot wrapper (`run-hook.cmd` or similar) to support Windows CMD and Unix bash.
+- Paths are correctly quoted to handle spaces on Windows (e.g., `"${CLAUDE_PLUGIN_ROOT}"`).
+- Context injection outputs match the target agent's schema:
+  - Cursor: `{"additional_context": "..."}` (snake_case)
+  - Claude Code: `{"hookSpecificOutput": {"additionalContext": "..."}}` (nested camelCase)
+  - Copilot CLI / SDK standard: `{"additionalContext": "..."}` (camelCase)
+- Hook output strings are properly JSON-escaped (handling quotes, backslashes, newlines).
+- Hook execution is clean: handles errors, avoids blocking terminal reads, and fails gracefully without breaking agent startup.
+- MCP servers/tools declare clear schemas and enforce human approval before making state changes or running commands.
+
 ## Final Check
 
 - Could a future agent use this without asking for the missing basics?

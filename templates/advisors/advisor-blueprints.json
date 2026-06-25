@@ -163,13 +163,15 @@
     },
     "tool-integration": {
       "workflowFocus": [
-        "Define the integration contract: API, MCP server, SaaS connector, schema, auth, or webhook workflow.",
+        "Define the integration contract: API, MCP server, SaaS connector, schema, auth, webhook, or agent-lifecycle hook workflow.",
         "Require capability discovery, dry-run behavior, permission checks, retries, and structured tool outputs."
       ],
       "recommendedReferences": [
         "API schema",
         "auth rules",
-        "error code map"
+        "error code map",
+        "hooks configuration (hooks.json)",
+        "polyglot wrappers"
       ],
       "recommendedScripts": [
         "tool smoke test",
@@ -177,9 +179,10 @@
       ],
       "niceToHave": [
         "mock responses",
-        "rate-limit policy"
+        "rate-limit policy",
+        "platform schema formats (Cursor, Claude Code, Copilot)"
       ],
-      "outputFormat": "Return tools used, inputs, dry-run or write status, results, errors, and rollback notes."
+      "outputFormat": "Return tools/hooks used, inputs/context config, dry-run or write status, results, errors, and rollback notes."
     },
     "browser-automation": {
       "workflowFocus": [
@@ -209,7 +212,8 @@
       "recommendedReferences": [
         "agent role map",
         "handoff schema",
-        "evaluation rubric"
+        "evaluation rubric",
+        "MCP/hook safety controls"
       ],
       "recommendedScripts": [
         "optional evaluator runner",
@@ -217,9 +221,10 @@
       ],
       "niceToHave": [
         "conflict resolution policy",
-        "parallelization checklist"
+        "parallelization checklist",
+        "fail-safe hook script templates"
       ],
-      "outputFormat": "Return selected agents, task graph, handoffs, evaluator criteria, and final decision."
+      "outputFormat": "Return selected agents/hooks, task graph, handoffs, evaluator criteria, and final decision."
     },
     "devops-cloud": {
       "workflowFocus": [

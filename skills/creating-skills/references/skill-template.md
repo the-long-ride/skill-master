@@ -19,6 +19,7 @@ One short paragraph describing the core principle.
 ## Inputs And Tools
 - Exact tools, files, commands, APIs, and constraints
 - Read-only inspection first; ask before edits, publishing, running commands, or spawning agents
+- If configuring agent hooks or MCP: define configuration details (e.g., `hooks.json`, MCP server tools/prompts, platform compatibility)
 
 ## Workflow
 1. First step
@@ -56,6 +57,7 @@ Output:
 - Prefer short examples over long explanations.
 - If humans will audit this skill, include a deterministic verification section.
 - For advisor skills, clearly separate skill-design advice from direct domain execution.
+- For hooks, verify cross-platform execution (using polyglot `.cmd`/`.sh` wrappers for Windows CMD/Unix shell compatibility) and platform-specific JSON schemas (Cursor's `additional_context` vs. Claude Code's `hookSpecificOutput.additionalContext` vs. Copilot's `additionalContext`).
 
 ## Example Prompts to Validate Triggering
 
